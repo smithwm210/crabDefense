@@ -34,6 +34,7 @@ func turn():
 
 func fire():
 	readied = false
+	
 	#enemy.on_hit(GameData.tower_data["GunT1"]["damage"])
 	get_tree().create_timer(1)
 	readied = true
