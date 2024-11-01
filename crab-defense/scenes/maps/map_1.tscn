@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://ctenm5wnp2dtp"]
+[gd_scene load_steps=9 format=4 uid="uid://ctenm5wnp2dtp"]
 
 [ext_resource type="Texture2D" uid="uid://cbfs7cyaayxy5" path="res://assets/environment/tilesets/terrainTiles_default.png" id="1_vg1am"]
 [ext_resource type="PackedScene" uid="uid://cruwj2d163u6a" path="res://scenes/turrets/gun_t_1.tscn" id="2_i5bl0"]
-[ext_resource type="PackedScene" uid="uid://cf7iabek7pgir" path="res://scenes/turrets/gun_t_2.tscn" id="3_vifry"]
-[ext_resource type="PackedScene" uid="uid://u3jn2f3e11gu" path="res://scenes/turrets/missile_t_1.tscn" id="4_0vfqo"]
+[ext_resource type="PackedScene" uid="uid://bxadnvepyqjp" path="res://scenes/enemies/crab.tscn" id="3_7eljf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwgsw"]
 texture = ExtResource("1_vg1am")
@@ -69,11 +68,8 @@ tile_set = SubResource("TileSet_78p6m")
 [node name="GunT1" parent="Turrets" instance=ExtResource("2_i5bl0")]
 position = Vector2(642, 605)
 
-[node name="GunT2" parent="Turrets" instance=ExtResource("3_vifry")]
-position = Vector2(799, 669)
-
-[node name="MissileT1" parent="Turrets" instance=ExtResource("4_0vfqo")]
-position = Vector2(505, 673)
-
 [node name="path" type="Path2D" parent="."]
 curve = SubResource("Curve2D_ba8at")
+
+[node name="Crab" parent="." instance=ExtResource("3_7eljf")]
+position = Vector2(707, 720)
