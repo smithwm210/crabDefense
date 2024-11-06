@@ -1,9 +1,97 @@
-[gd_scene load_steps=3 format=3 uid="uid://4i25rfd43nrv"]
+[gd_scene load_steps=7 format=3 uid="uid://4i25rfd43nrv"]
 
 [ext_resource type="Script" path="res://scenes/mainScenes/GameScene.gd" id="1_kt5qk"]
 [ext_resource type="PackedScene" uid="uid://ctenm5wnp2dtp" path="res://scenes/maps/map_1.tscn" id="2_ykfvm"]
+[ext_resource type="Texture2D" uid="uid://cwmelx07yucba" path="res://assets/UI/buttons/button_square_depth_gradient.png" id="3_y4yee"]
+[ext_resource type="Texture2D" uid="uid://br6rchw85o27f" path="res://assets/towers/towerDefense_tile249.png" id="4_v4jbs"]
+[ext_resource type="Texture2D" uid="uid://c76m4ewn0vud2" path="res://assets/towers/towerDefense_tile250.png" id="5_cjbt5"]
+[ext_resource type="Texture2D" uid="uid://dlsoluccpfkde" path="res://assets/towers/CRAB_Dyn_Turret_EarthA_v1.png" id="6_vyee1"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_kt5qk")
 
 [node name="Map1" parent="." instance=ExtResource("2_ykfvm")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BuildBar" type="VBoxContainer" parent="UI/HUD"]
+custom_minimum_size = Vector2(100, 400)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -400.0
+offset_right = 100.0
+grow_vertical = 0
+theme_override_constants/separation = 25
+
+[node name="Gun" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_y4yee")
+stretch_mode = 0
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_v4jbs")
+expand_mode = 1
+
+[node name="Gun2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_y4yee")
+stretch_mode = 0
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_cjbt5")
+expand_mode = 1
+
+[node name="Gun3" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_y4yee")
+stretch_mode = 0
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_vyee1")
+expand_mode = 1

@@ -2,13 +2,42 @@ extends Node2D
 
 var map_node
 
+var build_mode = false
+var build_valid = false
+var build_location
+var build_type
+
 var current_wave = 0
 var enemies_in_wave = 0
 
 func _ready():
 	map_node = get_node("Map1")
-	#on press_play, do below
+	
+	for i in get_tree().get_nodes_in_group("build_buttons"):
+		i.connect("pressed", initiate_build_mode(i.get_name()))
+		#if bug, try i.get_name()
+	
 	start_next_wave()
+
+##
+## Building Turrets
+##
+
+func _unhandled_input(event):
+	pass
+
+func initiate_build_mode(tower_type):
+	pass
+
+func update_tower_preview():
+	pass
+
+func cancel_build_model():
+	pass
+
+func verify_and_build():
+	pass
+
 
 ##
 ## Wave Functions
