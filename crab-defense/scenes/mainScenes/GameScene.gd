@@ -56,13 +56,11 @@ func update_tower_preview():
 	else:
 		get_node("UI").update_tower_preview(title_position, "ad54ff3c")
 		build_valid = false
-		
 
 func cancel_build_mode():
 	build_mode = false 
 	build_valid = false 
 	get_node("UI/TowerPreview").free()
-
 
 func verify_and_build():
 	if build_valid:

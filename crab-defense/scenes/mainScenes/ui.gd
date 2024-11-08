@@ -1,9 +1,6 @@
 extends CanvasLayer
 
 @onready var hp_bar = get_node("HUD/InfoBar/H/HP")
-#@onready var hp_bar_tween = $HUD/InfoBar/H/HP.create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-
-#hp_bar_tween.tween_property($HUD/InfoBar/H/HP, "value", base_health, 0.1).from(hp_bar.value)
 
 func set_tower_preview(tower_type, mouse_position):
 	var drag_tower = load("res://scenes/turrets/" + tower_type + ".tscn").instantiate()
