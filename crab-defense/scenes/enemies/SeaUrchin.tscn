@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm4ydti0xmpqc"]
+[gd_scene load_steps=5 format=3 uid="uid://cm4ydti0xmpqc"]
 
 [ext_resource type="Script" path="res://scenes/enemies/SeaUrchin.gd" id="1_sl6hx"]
 [ext_resource type="Texture2D" uid="uid://dc4wq6cak144" path="res://assets/enemies/CRAB_Dyn_urchinA_v1.png" id="2_lokrg"]
+[ext_resource type="Texture2D" uid="uid://dqliglvsw8ofm" path="res://assets/UI/HPbar.jpg" id="3_0x2uq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fijd"]
 radius = 21.5058
@@ -12,11 +13,26 @@ script = ExtResource("1_sl6hx")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_0fijd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -1)
 scale = Vector2(0.194167, 0.194167)
 texture = ExtResource("2_lokrg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-1, 0)
-shape = SubResource("CircleShape2D_0fijd")
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -30.0
+offset_top = -40.0
+offset_right = 30.0
+offset_bottom = -34.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_0x2uq")
+texture_progress = ExtResource("3_0x2uq")
+tint_under = Color(0.197937, 0.197937, 0.197937, 1)
+tint_progress = Color(0, 0.59492, 0.253483, 1)
+
+[node name="Impact" type="Marker2D" parent="."]
+position = Vector2(-10, -10)

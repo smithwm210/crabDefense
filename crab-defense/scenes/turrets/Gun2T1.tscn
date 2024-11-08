@@ -1,11 +1,74 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf7iabek7pgir"]
+[gd_scene load_steps=9 format=3 uid="uid://cf7iabek7pgir"]
 
 [ext_resource type="Script" path="res://scenes/turrets/Gun2T1.gd" id="1_d5mpx"]
 [ext_resource type="Texture2D" uid="uid://bf21o4m6rae0w" path="res://assets/towers/towerDefense_tile181.png" id="2_2aaee"]
 [ext_resource type="Texture2D" uid="uid://c76m4ewn0vud2" path="res://assets/towers/towerDefense_tile250.png" id="3_vgunp"]
+[ext_resource type="Texture2D" uid="uid://uj01qqo4xjm0" path="res://assets/effects/towerDefense_tile297.png" id="4_qnxmh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ynfpi"]
 radius = 20.0
+
+[sub_resource type="Animation" id="Animation_gxgtx"]
+resource_name = "fire"
+length = 0.15
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turret/Muzzle1/MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.001, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Turret/Muzzle2/MuzzleFlash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.001, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_nxc0k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turret/Muzzle1/MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Turret/Muzzle2/MuzzleFlash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e0ies"]
+_data = {
+"RESET": SubResource("Animation_nxc0k"),
+"fire": SubResource("Animation_gxgtx")
+}
 
 [node name="Gun2T1" type="Node2D"]
 script = ExtResource("1_d5mpx")
@@ -20,13 +83,32 @@ offset = Vector2(10, 0)
 [node name="Muzzle1" type="Node2D" parent="Turret"]
 position = Vector2(41, 6)
 
+[node name="MuzzleFlash" type="Sprite2D" parent="Turret/Muzzle1"]
+visible = false
+position = Vector2(10, 0)
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_qnxmh")
+
 [node name="Muzzle2" type="Node2D" parent="Turret"]
 position = Vector2(41, -6)
+
+[node name="MuzzleFlash" type="Sprite2D" parent="Turret/Muzzle2"]
+visible = false
+position = Vector2(10, 0)
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_qnxmh")
 
 [node name="Range" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
 shape = SubResource("CircleShape2D_ynfpi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e0ies")
+}
 
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]

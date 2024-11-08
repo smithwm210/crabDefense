@@ -1,5 +1,7 @@
 extends Node2D
 
+signal game_finished(result)
+
 var map_node
 
 var build_mode = false
@@ -10,6 +12,8 @@ var build_type
 
 var current_wave = 0
 var enemies_in_wave = 0
+
+var base_health = 100
 
 func _ready():
 	map_node = get_node("Map1")
@@ -66,6 +70,7 @@ func verify_and_build():
 		new_tower.position = build_location
 		new_tower.built = true
 		new_tower.type = build_type
+		new_tower.category = GameData.tower_data[build_type]["category"]
 		map_node.get_node("Turrets").add_child(new_tower, true)
 		map_node.get_node("TowerExclusion").set_cell(build_tile, 0, Vector2(1, 0))
 
@@ -80,7 +85,7 @@ func start_next_wave():
 	spawn_enemies(wave_data)
 	
 func retrieve_wave_data():
-	var wave_data = [["SeaUrchin",3.0],["SeaUrchin",0.1]]
+	var wave_data = [["SeaUrchin",1.0],["SeaUrchin",1.0],["SeaUrchin",1.0],["SeaUrchin",1.0],["SeaUrchin",1.0]]
 	current_wave += 1
 	print("We are on wave ", current_wave)
 	enemies_in_wave = wave_data.size()
@@ -89,7 +94,15 @@ func retrieve_wave_data():
 func spawn_enemies(wave_data):
 	for i in wave_data:
 		var new_enemy = load("res://scenes/enemies/"+i[0]+".tscn").instantiate()
+		new_enemy.base_damage.connect(on_base_damage)
 		map_node.get_node("path").add_child(new_enemy, true)
 		print("i spawned!")
 		await get_tree().create_timer(i[1]).timeout
+		
+func on_base_damage(damage):
+	base_health -= damage
+	if base_health <= 0:
+		game_finished.emit("game_finished")
+	else:
+		$UI.update_health_bar(base_health)
 		
