@@ -66,7 +66,7 @@ func cancel_build_mode():
 
 func verify_and_build():
 	if build_valid:
-		var new_tower = load("res://Scenes/Turrets/" + build_type + ".tscn").instantiate()
+		var new_tower = load("res://scenes/turrets/" + build_type + ".tscn").instantiate()
 		new_tower.position = build_location
 		new_tower.built = true
 		new_tower.type = build_type

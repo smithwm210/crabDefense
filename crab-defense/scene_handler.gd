@@ -9,7 +9,7 @@ func load_main_menu():
 	
 func on_new_game_pressed():
 	$"MainMenu".queue_free()
-	var game_scene: Node2D = load("res://Scenes/MainScenes/GameScene.tscn").instantiate()
+	var game_scene: Node2D = load("res://scenes/mainScenes/GameScene.tscn").instantiate()
 	game_scene.connect("game_finished", unload_game)
 	call_deferred('add_child', game_scene)
 	
@@ -18,6 +18,6 @@ func on_quit_pressed():
 
 func unload_game(result):
 	$GameScene.queue_free()
-	var main_menu = load("res://Scenes/UIScenes/main_menu.tscn").instantiate()
+	var main_menu = load("res://scenes/uiScenes/main_menu.tscn").instantiate()
 	add_child(main_menu)
 	load_main_menu()
