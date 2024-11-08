@@ -1,8 +1,8 @@
 extends PathFollow2D
 
 
-var speed = 150
-var hp = 50
+var speed = 75
+var hp = 100
 
 func _physics_process(delta):
 	move(delta)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bf21o4m6rae0w" path="res://assets/towers/towerDefense_tile181.png" id="1_ufyp8"]
 [ext_resource type="Texture2D" uid="uid://br6rchw85o27f" path="res://assets/towers/towerDefense_tile249.png" id="2_uo458"]
-[ext_resource type="Script" path="res://scenes/turrets/gunT!.gd" id="3_u57au"]
+[ext_resource type="Script" path="res://scenes/turrets/GunT1.gd" id="3_u57au"]
 
 [node name="GunT1" type="Node2D"]
 script = ExtResource("3_u57au")
