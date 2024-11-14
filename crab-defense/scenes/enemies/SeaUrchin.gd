@@ -22,6 +22,7 @@ func _physics_process(delta):
 	move(delta)
 
 func move(delta):
+	#set_direction = shortest distance to crab + speed * delta
 	set_progress(get_progress() + speed * delta)
 	set_progress(get_progress() + speed * delta)
 	health_bar.set_position(position + Vector2(-30,-40))

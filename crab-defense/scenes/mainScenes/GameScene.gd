@@ -15,8 +15,11 @@ var enemies_in_wave = 0
 
 var base_health = 100
 
+var crab_position
+
 func _ready():
 	map_node = get_node("Map1")
+	crab_position = get_node("Map1/crab").global_transform.origin
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.pressed.connect(initiate_build_mode.bind(i.name))
 
@@ -91,9 +94,12 @@ func retrieve_wave_data():
 
 func spawn_enemies(wave_data):
 	for i in wave_data:
+		randomize()
+		var rand_path = (randi() %3) + 1
 		var new_enemy = load("res://scenes/enemies/"+i[0]+".tscn").instantiate()
 		new_enemy.base_damage.connect(on_base_damage)
-		map_node.get_node("path").add_child(new_enemy, true)
+		
+		map_node.get_node("path" + str(rand_path)).add_child(new_enemy, true)
 		print("i spawned!")
 		await get_tree().create_timer(i[1]).timeout
 		
