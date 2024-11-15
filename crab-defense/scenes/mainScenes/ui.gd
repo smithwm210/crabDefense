@@ -36,12 +36,18 @@ func update_tower_preview(new_position, color):
 func _on_pause_play_pressed():
 	if get_parent().build_mode:
 		get_parent().cancel_build_mode()
-	if get_tree().is_paused():
+	
+	if get_tree().is_paused(): #plays level
+		if get_parent().current_wave != 0 && get_parent().wave_over == true:
+			get_parent().wave_over = false
+			get_parent().start_next_wave()
 		get_tree().paused = false
-	elif get_parent().current_wave == 0:
+	elif get_parent().current_wave == 0: # starts first wave
 		get_parent().start_next_wave()
-	else:
+	elif get_parent().current_wave != 0 && get_parent().get_child_count() == 0: #pauses at the end of each wave
 		get_tree().paused = true
+	else: #pauses level
+		get_tree().paused = true 
 
 func _on_speed_up_pressed():
 	if get_parent().build_mode:
@@ -62,3 +68,7 @@ func update_health_bar(base_health):
 		hp_bar.tint_progress = Color("e1be32") # Orange
 	else:
 		hp_bar.tint_progress = Color("e11e1e") # Red
+		
+
+func update_wave_tracker():
+	pass

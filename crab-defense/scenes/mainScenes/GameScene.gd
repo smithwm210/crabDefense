@@ -14,6 +14,9 @@ var current_wave = 0
 var enemies_in_wave = 0
 
 var base_health = 100
+var wave_over = false
+var dmg_in_round = 0
+var money = 100
 
 var crab_position
 
@@ -28,6 +31,11 @@ func _ready():
 ##
 
 func _process(delta):
+	get_node("UI/HUD/InfoBar/H/Money").text = str(money)
+	if enemies_in_wave == 0 && current_wave != 0 && wave_over == false:
+		print("wave ended")
+		wave_end()
+		
 	if build_mode:
 		update_tower_preview()
 
@@ -66,7 +74,7 @@ func cancel_build_mode():
 	get_node("UI/TowerPreview").free()
 
 func verify_and_build():
-	if build_valid:
+	if build_valid && money >= int(GameData.tower_data[build_type]["cost"]):
 		var new_tower = load("res://scenes/turrets/" + build_type + ".tscn").instantiate()
 		new_tower.position = build_location
 		new_tower.built = true
@@ -74,6 +82,7 @@ func verify_and_build():
 		new_tower.category = GameData.tower_data[build_type]["category"]
 		map_node.get_node("Turrets").add_child(new_tower, true)
 		map_node.get_node("TowerExclusion").set_cell(build_tile, 0, Vector2(1, 0))
+		money -= int(GameData.tower_data[build_type]["cost"])
 
 
 ##
@@ -87,8 +96,6 @@ func start_next_wave():
 	
 func retrieve_wave_data():
 	var wave_data = [["SeaUrchin",1.0],["SeaUrchin",1.0],["SeaUrchin",1.0],["SeaUrchin",1.0],["SeaUrchin",1.0]]
-	current_wave += 1
-	print("We are on wave ", current_wave)
 	enemies_in_wave = wave_data.size()
 	return wave_data
 
@@ -98,13 +105,37 @@ func spawn_enemies(wave_data):
 		var rand_path = (randi() %3) + 1
 		var new_enemy = load("res://scenes/enemies/"+i[0]+".tscn").instantiate()
 		new_enemy.base_damage.connect(on_base_damage)
+		new_enemy.enemy_died.connect(on_enemy_died)
 		
 		map_node.get_node("path" + str(rand_path)).add_child(new_enemy, true)
 		print("i spawned!")
 		await get_tree().create_timer(i[1]).timeout
-		
+	current_wave += 1
+	print("We are on wave ", current_wave)
+
+func wave_end():
+	wave_over = true
+	$UI.get_node("HUD/GameControls/PausePlay").set_pressed(false) #sets play button to standard
+	
+	get_node("Map1/crab").position += Vector2(200,0) #moves crab
+	for i in 3:
+		get_node("Map1/path" + str(i + 1)).position += Vector2(200,0) #moves paths
+	if get_node("Map1/crab").position.x >= 650:
+		get_node("Camera2D").position += Vector2(200,0) #moves camera
+	dmg_in_round = 0
+	$UI._on_pause_play_pressed()
+	
+
+func on_enemy_died():
+	enemies_in_wave -= 1
+	money += 25
+	print(enemies_in_wave)
+	print(money)
+
 func on_base_damage(damage):
+	#print(damage)
 	base_health -= damage
+	dmg_in_round += damage
 	if base_health <= 0:
 		game_finished.emit("game_finished")
 	else:

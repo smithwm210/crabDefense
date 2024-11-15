@@ -6,6 +6,9 @@ var enemy_array = []
 var built = false
 var enemy
 var readied = true
+var enemy_offset = 0
+var wave_number = 0
+
 
 func _ready():
 	if built:
@@ -51,11 +54,7 @@ func fire_missile():
 
 func _on_range_body_entered(body: Node2D):
 	enemy_array.append(body.get_parent())
-	print(enemy_array)
 
 
 func _on_range_body_exited(body: Node2D):
 	enemy_array.erase(body.get_parent())
-
-
-	
