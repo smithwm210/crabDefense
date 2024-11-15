@@ -50,6 +50,7 @@ grow_vertical = 0
 theme_override_constants/separation = 25
 
 [node name="Gun" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+process_mode = 3
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -71,6 +72,7 @@ texture = ExtResource("4_v4jbs")
 expand_mode = 1
 
 [node name="Gun2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+process_mode = 3
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -92,6 +94,7 @@ texture = ExtResource("5_cjbt5")
 expand_mode = 1
 
 [node name="Gun3" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+process_mode = 3
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4

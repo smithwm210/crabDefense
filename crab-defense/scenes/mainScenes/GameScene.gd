@@ -96,24 +96,27 @@ func start_next_wave():
 	
 func retrieve_wave_data():
 	var wave_data = [["SeaUrchin",1.0],["SeaUrchin",1.0],["SeaUrchin",1.0],["SeaUrchin",1.0],["SeaUrchin",1.0]]
-	enemies_in_wave = wave_data.size()
+	enemies_in_wave = wave_data.size() * (current_wave+1)
 	return wave_data
 
 func spawn_enemies(wave_data):
-	for i in wave_data:
-		randomize()
-		var rand_path = (randi() %3) + 1
-		var new_enemy = load("res://scenes/enemies/"+i[0]+".tscn").instantiate()
-		new_enemy.base_damage.connect(on_base_damage)
-		new_enemy.enemy_died.connect(on_enemy_died)
-		
-		map_node.get_node("path" + str(rand_path)).add_child(new_enemy, true)
-		print("i spawned!")
-		await get_tree().create_timer(i[1]).timeout
+	for j in current_wave+1:
+		for i in wave_data:
+			randomize()
+			var rand_path = (randi() %3) + 1
+			var new_enemy = load("res://scenes/enemies/"+i[0]+".tscn").instantiate()
+			new_enemy.base_damage.connect(on_base_damage)
+			new_enemy.enemy_died.connect(on_enemy_died)
+			
+			map_node.get_node("path" + str(rand_path)).add_child(new_enemy, true)
+			print("i spawned!")
+			await get_tree().create_timer(i[1]).timeout
 	current_wave += 1
 	print("We are on wave ", current_wave)
 
 func wave_end():
+	if current_wave == 5:
+		game_finished.emit("You Won!!!")
 	wave_over = true
 	$UI.get_node("HUD/GameControls/PausePlay").set_pressed(false) #sets play button to standard
 	
@@ -137,7 +140,7 @@ func on_base_damage(damage):
 	base_health -= damage
 	dmg_in_round += damage
 	if base_health <= 0:
-		game_finished.emit("game_finished")
+		game_finished.emit("You Lost...")
 	else:
 		$UI.update_health_bar(base_health)
 		
