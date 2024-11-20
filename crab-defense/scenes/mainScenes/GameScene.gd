@@ -101,7 +101,7 @@ func start_next_wave():
 	spawn_enemies(wave_data)
 	
 func retrieve_wave_data():
-	var wave_data = [["SeaUrchin",1.0],["SeaUrchin",1.0],["SeaUrchin",1.0],["SeaUrchin",1.0],["SeaUrchin",1.0]]
+	var wave_data = [["SeaUrchin",1.0],["Lizard",1.0],["Snake",1.0],["Spider",1.0],["SeaUrchin",1.0]]
 	enemies_in_wave = wave_data.size() * (current_wave+1)
 	return wave_data
 
