@@ -4,8 +4,8 @@ extends PathFollow2D
 signal base_damage(damage)
 signal enemy_died
 
-var speed = 60
-var hp = 200
+var speed = 40
+var hp = 500
 
 @onready var health_bar = get_node("HealthBar")
 @onready var impact_area = get_node("Impact")
@@ -25,7 +25,7 @@ func _physics_process(delta):
 
 func move(delta):
 	set_progress(get_progress() + speed * delta)
-	health_bar.set_position(global_position + Vector2(-30, -40))
+	health_bar.set_position(global_position + Vector2(-30, -60))
 		
 	
 func on_hit(damage):
@@ -37,8 +37,8 @@ func on_hit(damage):
 
 func impact():
 	randomize()
-	var x_pos = randi() %100
-	var y_pos = randi() %16
+	var x_pos = randi() %90
+	var y_pos = randi() %21
 	var impact_location = Vector2(x_pos, y_pos)
 	var new_impact = projectile_impact.instantiate()
 	new_impact.position = impact_location

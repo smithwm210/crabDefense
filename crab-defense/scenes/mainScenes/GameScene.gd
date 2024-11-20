@@ -17,6 +17,7 @@ var base_health = 100
 var wave_over = false
 var dmg_in_round = 0
 var money = 100
+var coords
 
 var crab_position
 
@@ -32,7 +33,12 @@ func _ready():
 
 func _process(delta):
 	get_node("UI/HUD/InfoBar/H/Money").text = str(money)
-	if enemies_in_wave == 0 && current_wave != 0 && wave_over == false:
+	
+	coords = map_node.get_node("TowerExclusion").local_to_map(get_global_mouse_position())
+	
+	get_node("UI/HUD/InfoBar/H/coords").text = str(coords)
+	
+	if enemies_in_wave <= 0 && current_wave != 0 && wave_over == false:
 		print("wave ended")
 		wave_end()
 		
@@ -54,7 +60,7 @@ func initiate_build_mode(tower_type):
 	get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
 
 func update_tower_preview():
-	var mouse_position = get_global_mouse_position()
+	var mouse_position = get_local_mouse_position()
 	var current_tile = map_node.get_node("TowerExclusion").local_to_map(mouse_position)
 	var title_position = map_node.get_node("TowerExclusion").map_to_local(current_tile)
 	
@@ -120,11 +126,12 @@ func wave_end():
 	wave_over = true
 	$UI.get_node("HUD/GameControls/PausePlay").set_pressed(false) #sets play button to standard
 	
-	get_node("Map1/crab").global_position += Vector2(200,0) #moves crab
+	get_node("Map1/crab").global_position += Vector2(192,0) #moves crab
+	
 	for i in 3:
-		get_node("Map1/path" + str(i + 1)).global_position += Vector2(300,0) #moves paths
-	if get_node("Map1/crab").position.x >= 650:
-		get_node("Camera2D").global_position += Vector2(200,0) #moves camera
+		get_node("Map1/path" + str(i + 1)).global_position += Vector2(192,0) #moves paths
+	if get_node("Map1/crab").global_position.x >= 150:
+		get_node("Camera2D").global_position += Vector2(192,0) #moves camera
 	dmg_in_round = 0
 	await get_tree().create_timer(0.5).timeout
 	$UI._on_pause_play_pressed()
@@ -134,10 +141,8 @@ func on_enemy_died():
 	enemies_in_wave -= 1
 	money += 25
 	print(enemies_in_wave)
-	print(money)
 
 func on_base_damage(damage):
-	#print(damage)
 	base_health -= damage
 	dmg_in_round += damage
 	if base_health <= 0:
