@@ -24,7 +24,7 @@ func set_tower_preview(tower_type, mouse_position):
 	move_child(get_node("TowerPreview"), 0)
 
 func update_tower_preview(new_position, color):
-	get_node("TowerPreview").set_position(new_position)
+	get_node("TowerPreview").set_global_position(new_position)
 	if get_node("TowerPreview/DragTower").modulate != Color(color):
 		get_node("TowerPreview/DragTower").modulate = Color(color)
 		get_node("TowerPreview/Sprite2D").modulate = Color(color)

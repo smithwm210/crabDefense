@@ -104,6 +104,7 @@ texture = ExtResource("5_cjbt5")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="UI/HUD/BuildBar/Gun2"]
+layout_mode = 0
 offset_left = 5.0
 offset_top = 3.0
 offset_right = 45.0
@@ -135,6 +136,7 @@ texture = ExtResource("7_j55ut")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="UI/HUD/BuildBar/Gun3"]
+layout_mode = 0
 offset_left = 5.0
 offset_top = 3.0
 offset_right = 45.0

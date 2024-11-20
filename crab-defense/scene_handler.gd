@@ -10,19 +10,17 @@ func load_main_menu():
 	print("in main menu")
 	get_node("MainMenu/M/VB/NewGame").connect("pressed", on_new_game_pressed)
 	get_node("MainMenu/M/VB/Quit").connect("pressed", on_quit_pressed)
-	print(win_loss)
-	print("bug")
 	if win_loss != "":
 		get_node("MainMenu/GameOver").text = "Game Over"
 		get_node("MainMenu/win_loss").text = str(win_loss)
 	menu_state = "main_menu"
 
-func load_restart_menu():
-	print("in restart menu")
-	get_node("RestartMenu/win_loss").text = str(win_loss)
-	get_node("RestartMenu/M/VB/NewGame").connect("pressed", on_new_game_pressed)
-	get_node("RestartMenu/M/VB/Quit").connect("pressed", on_quit_pressed)
-	menu_state = "restart_menu"
+#func load_restart_menu():
+	#print("in restart menu")
+	#get_node("RestartMenu/win_loss").text = str(win_loss)
+	#get_node("RestartMenu/M/VB/NewGame").connect("pressed", on_new_game_pressed)
+	#get_node("RestartMenu/M/VB/Quit").connect("pressed", on_quit_pressed)
+	#menu_state = "restart_menu"
 
 func on_new_game_pressed():
 	#if menu_state == "main_menu":
@@ -39,7 +37,6 @@ func on_quit_pressed():
 func unload_game(result):
 	$GameScene.queue_free()
 	var main_menu = load("res://scenes/uiScenes/main_menu.tscn").instantiate()
-	var win_loss = result
-	print(win_loss, "hello")
+	win_loss = result
 	add_child(main_menu)
 	load_main_menu()

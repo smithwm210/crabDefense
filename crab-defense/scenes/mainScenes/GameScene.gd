@@ -126,6 +126,7 @@ func wave_end():
 	if get_node("Map1/crab").position.x >= 650:
 		get_node("Camera2D").global_position += Vector2(200,0) #moves camera
 	dmg_in_round = 0
+	await get_tree().create_timer(0.5).timeout
 	$UI._on_pause_play_pressed()
 	
 
