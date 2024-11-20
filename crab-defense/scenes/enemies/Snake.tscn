@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbv1522d0qume"]
+[gd_scene load_steps=5 format=3 uid="uid://bbv1522d0qume"]
 
 [ext_resource type="Script" path="res://scenes/enemies/Snake.gd" id="1_degoo"]
 [ext_resource type="Texture2D" uid="uid://duaagcbiuuwa7" path="res://assets/enemies/CRAB_Dyn_snake_v1.png" id="2_1yu4l"]
+[ext_resource type="Texture2D" uid="uid://dqliglvsw8ofm" path="res://assets/UI/HPbar.jpg" id="3_u500i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o57ui"]
 radius = 8.0
@@ -12,12 +13,34 @@ loop = false
 script = ExtResource("1_degoo")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(1, -1)
-scale = Vector2(0.194167, 0.194167)
-texture = ExtResource("2_1yu4l")
+rotation = 1.5708
+scale = Vector2(1.75, 1.75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_o57ui")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-1, -1)
+scale = Vector2(0.194167, 0.194167)
+texture = ExtResource("2_1yu4l")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+layout_direction = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = -40.0
+offset_right = 30.0
+offset_bottom = -34.0
+grow_horizontal = 2
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_u500i")
+texture_progress = ExtResource("3_u500i")
+tint_under = Color(0.197937, 0.197937, 0.197937, 1)
+tint_progress = Color(0, 0.59492, 0.253483, 1)
+
+[node name="Impact" type="Marker2D" parent="."]
+position = Vector2(-42, -10)

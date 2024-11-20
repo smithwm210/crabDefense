@@ -32,7 +32,7 @@ func _ready():
 
 func _process(delta):
 	get_node("UI/HUD/InfoBar/H/Money").text = str(money)
-	if enemies_in_wave == 0 && current_wave != 0 && wave_over == false:
+	if enemies_in_wave <= 0 && current_wave != 0 && wave_over == false:
 		print("wave ended")
 		wave_end()
 		
@@ -95,7 +95,7 @@ func start_next_wave():
 	spawn_enemies(wave_data)
 	
 func retrieve_wave_data():
-	var wave_data = [["SeaUrchin",1.0],["SeaUrchin",1.0],["SeaUrchin",1.0],["SeaUrchin",1.0],["SeaUrchin",1.0]]
+	var wave_data = [["Snake",1.0],["SeaUrchin",1.0],["Lizard",1.0],["SeaUrchin",1.0],["Spider",1.0]]
 	enemies_in_wave = wave_data.size() * (current_wave+1)
 	return wave_data
 
@@ -126,7 +126,6 @@ func wave_end():
 	if get_node("Map1/crab").position.x >= 650:
 		get_node("Camera2D").global_position += Vector2(200,0) #moves camera
 	dmg_in_round = 0
-	await get_tree().create_timer(0.5).timeout
 	$UI._on_pause_play_pressed()
 	
 

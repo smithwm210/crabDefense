@@ -4,8 +4,8 @@ extends PathFollow2D
 signal base_damage(damage)
 signal enemy_died
 
-var speed = 80
-var hp = 100
+var speed = 60
+var hp = 150
 
 @onready var health_bar = get_node("HealthBar")
 @onready var impact_area = get_node("Impact")
