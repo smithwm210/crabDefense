@@ -120,11 +120,11 @@ func wave_end():
 	wave_over = true
 	$UI.get_node("HUD/GameControls/PausePlay").set_pressed(false) #sets play button to standard
 	
-	get_node("Map1/crab").position += Vector2(200,0) #moves crab
+	get_node("Map1/crab").global_position += Vector2(200,0) #moves crab
 	for i in 3:
-		get_node("Map1/path" + str(i + 1)).position += Vector2(200,0) #moves paths
+		get_node("Map1/path" + str(i + 1)).global_position += Vector2(300,0) #moves paths
 	if get_node("Map1/crab").position.x >= 650:
-		get_node("Camera2D").position += Vector2(200,0) #moves camera
+		get_node("Camera2D").global_position += Vector2(200,0) #moves camera
 	dmg_in_round = 0
 	$UI._on_pause_play_pressed()
 	

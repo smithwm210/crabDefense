@@ -18,7 +18,7 @@ func set_tower_preview(tower_type, mouse_position):
 	var control = Control.new()
 	control.add_child(drag_tower, true)
 	control.add_child(range_texture, true)
-	control.position = mouse_position
+	control.global_position = mouse_position
 	control.set_name("TowerPreview")
 	add_child(control, true)
 	move_child(get_node("TowerPreview"), 0)

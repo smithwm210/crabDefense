@@ -23,7 +23,6 @@ scale = Vector2(0.194167, 0.194167)
 texture = ExtResource("2_lokrg")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
-visible = false
 layout_direction = 1
 anchors_preset = 5
 anchor_left = 0.5

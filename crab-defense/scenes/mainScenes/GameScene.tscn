@@ -71,6 +71,16 @@ grow_vertical = 2
 texture = ExtResource("4_v4jbs")
 expand_mode = 1
 
+[node name="Label" type="Label" parent="UI/HUD/BuildBar/Gun"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 45.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("11_4vhs7")
+theme_override_font_sizes/font_size = 20
+text = "50"
+
 [node name="Gun2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
 process_mode = 3
 custom_minimum_size = Vector2(80, 80)
@@ -93,6 +103,15 @@ grow_vertical = 2
 texture = ExtResource("5_cjbt5")
 expand_mode = 1
 
+[node name="Label" type="Label" parent="UI/HUD/BuildBar/Gun2"]
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 45.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("11_4vhs7")
+theme_override_font_sizes/font_size = 20
+text = "75"
+
 [node name="Gun3" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
 process_mode = 3
 custom_minimum_size = Vector2(80, 80)
@@ -114,6 +133,15 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_j55ut")
 expand_mode = 1
+
+[node name="Label" type="Label" parent="UI/HUD/BuildBar/Gun3"]
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 45.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("11_4vhs7")
+theme_override_font_sizes/font_size = 20
+text = "100"
 
 [node name="GameControls" type="HBoxContainer" parent="UI/HUD"]
 layout_mode = 1

@@ -25,7 +25,7 @@ func _physics_process(delta):
 		enemy = null
 
 func turn():
-	get_node("Turret").look_at(enemy.position)
+	get_node("Turret").look_at(enemy.global_position)
 
 func select_enemy():
 	var enemy_progress_array = []

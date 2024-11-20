@@ -7,14 +7,14 @@ signal enemy_died
 var speed = 75
 var hp = 100
 
-#@onready var health_bar = get_node("HealthBar")
+@onready var health_bar = get_node("HealthBar")
 @onready var impact_area = get_node("Impact")
 var projectile_impact = preload("res://scenes/supportScenes/projectile_impact.tscn")
 
-#func _ready():
-	#health_bar.max_value = hp
-	#health_bar.value = hp
-	#get_node("HealthBar").set_as_top_level(true) #disabled because health bars were not working
+func _ready():
+	health_bar.max_value = hp
+	health_bar.value = hp
+	get_node("HealthBar").set_as_top_level(true) #disabled because health bars were not working
 
 func _physics_process(delta):
 	if progress_ratio == 1.0:
@@ -25,13 +25,13 @@ func _physics_process(delta):
 
 func move(delta):
 	set_progress(get_progress() + speed * delta)
-	#health_bar.set_position(position + Vector2(-30,-40))
+	health_bar.set_position(global_position + Vector2(-30,-40))
 		
 	
 func on_hit(damage):
 	impact()
 	hp -= damage
-	#health_bar.value = hp
+	health_bar.value = hp
 	if hp <= 0:
 		on_destroy()
 
