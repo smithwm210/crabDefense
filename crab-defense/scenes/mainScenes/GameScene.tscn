@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://4i25rfd43nrv"]
+[gd_scene load_steps=15 format=3 uid="uid://4i25rfd43nrv"]
 
 [ext_resource type="Script" path="res://scenes/mainScenes/GameScene.gd" id="1_kt5qk"]
 [ext_resource type="PackedScene" uid="uid://ctenm5wnp2dtp" path="res://scenes/maps/map_1.tscn" id="2_ykfvm"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c76m4ewn0vud2" path="res://assets/towers/towerDefense_tile250.png" id="5_cjbt5"]
 [ext_resource type="Texture2D" uid="uid://cictlbfrmmauh" path="res://assets/towers/CRAB_Dyn_Turret_EarthA_v2.png" id="7_j55ut"]
 [ext_resource type="Texture2D" uid="uid://dmvj7crq6ptai" path="res://assets/Icons/play.png" id="8_2syfi"]
+[ext_resource type="Texture2D" uid="uid://bx1mc67rtnxht" path="res://assets/towers/CRAB_Dyn_Turret_WaterA_v1.png" id="9_hfgdo"]
 [ext_resource type="Texture2D" uid="uid://pq63cyblqyi8" path="res://assets/Icons/pause.png" id="9_ok1ca"]
 [ext_resource type="Texture2D" uid="uid://kriejg1awqog" path="res://assets/Icons/fastForward.png" id="10_3ntvn"]
 [ext_resource type="FontFile" uid="uid://iw3o4j75jcwf" path="res://resources/fonts/font_ui50.tres" id="11_4vhs7"]
@@ -35,16 +36,16 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="BuildBar" type="HBoxContainer" parent="UI/HUD"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(100, 60)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 30.0
-offset_top = -130.0
+offset_top = -90.0
 offset_right = 30.0
-offset_bottom = -30.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 25
@@ -145,6 +146,38 @@ theme_override_fonts/font = ExtResource("11_4vhs7")
 theme_override_font_sizes/font_size = 20
 text = "100"
 
+[node name="Gun4" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+process_mode = 3
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_y4yee")
+stretch_mode = 0
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 20.0
+offset_right = -8.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_hfgdo")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="UI/HUD/BuildBar/Gun4"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 45.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("11_4vhs7")
+theme_override_font_sizes/font_size = 20
+text = "100"
+
 [node name="GameControls" type="HBoxContainer" parent="UI/HUD"]
 layout_mode = 1
 anchors_preset = -1
@@ -210,6 +243,30 @@ theme_override_fonts/font = ExtResource("11_4vhs7")
 theme_override_font_sizes/font_size = 30
 text = "100"
 horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="UI/HUD/InfoBar/H"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+
+[node name="wave_text" type="Label" parent="UI/HUD/InfoBar/H"]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.705882)
+theme_override_fonts/font = ExtResource("11_4vhs7")
+theme_override_font_sizes/font_size = 30
+text = "Wave:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="coords" type="Label" parent="UI/HUD/InfoBar/H"]
+custom_minimum_size = Vector2(110, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.705882)
+theme_override_fonts/font = ExtResource("11_4vhs7")
+theme_override_font_sizes/font_size = 30
+text = "100"
 vertical_alignment = 1
 
 [node name="Icon" type="TextureRect" parent="UI/HUD/InfoBar/H"]

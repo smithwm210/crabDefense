@@ -45,6 +45,6 @@ func impact():
 	impact_area.add_child(new_impact)
 
 func on_destroy():
-	get_node("Sprite2D").queue_free()
+	get_node("CharacterBody2D/Sprite2D").queue_free()
 	enemy_died.emit()
 	self.queue_free()

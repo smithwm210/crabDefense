@@ -24,10 +24,21 @@ func set_tower_preview(tower_type, mouse_position):
 	move_child(get_node("TowerPreview"), 0)
 
 func update_tower_preview(new_position, color):
-	get_node("TowerPreview").set_global_position(new_position)
-	if get_node("TowerPreview/DragTower").modulate != Color(color):
-		get_node("TowerPreview/DragTower").modulate = Color(color)
-		get_node("TowerPreview/Sprite2D").modulate = Color(color)
+	if get_parent().wave_tracker == 0:
+		get_node("TowerPreview").set_global_position(new_position)
+		if get_node("TowerPreview/DragTower").modulate != Color(color):
+			get_node("TowerPreview/DragTower").modulate = Color(color)
+			get_node("TowerPreview/Sprite2D").modulate = Color(color)
+	elif get_parent().crab_moved == null:
+		get_node("TowerPreview").set_global_position(new_position)
+		if get_node("TowerPreview/DragTower").modulate != Color(color):
+			get_node("TowerPreview/DragTower").modulate = Color(color)
+			get_node("TowerPreview/Sprite2D").modulate = Color(color)
+	else:
+		get_node("TowerPreview").set_global_position(new_position+Vector2(192,0))
+		if get_node("TowerPreview/DragTower").modulate != Color(color):
+			get_node("TowerPreview/DragTower").modulate = Color(color)
+			get_node("TowerPreview/Sprite2D").modulate = Color(color)
 
 ##
 ## Game Control Functions
