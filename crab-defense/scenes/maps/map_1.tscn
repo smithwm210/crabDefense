@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://d046vtldubtue" path="res://assets/environment/tilesets/CRAB_Env_Sand_v1.png" id="2_2it2y"]
 [ext_resource type="Texture2D" uid="uid://d22qkfifgouef" path="res://assets/environment/tilesets/Obstructed.png" id="3_u88qj"]
 [ext_resource type="Texture2D" uid="uid://ddd7142p3w70a" path="res://assets/environment/tilesets/CRAB_Env_CliffwithSand_v1.png" id="4_0dd14"]
-[ext_resource type="Texture2D" uid="uid://b6tn32ibgceg6" path="res://assets/enemies/CRAB_Dyn_crab_v1.png" id="4_yp5gq"]
 [ext_resource type="Texture2D" uid="uid://blnfthq0ou7lh" path="res://assets/environment/tilesets/CRAB_Env_Cliff_v1.png" id="5_a4ey2"]
+[ext_resource type="Texture2D" uid="uid://wjtffypil1us" path="res://assets/enemies/CRAB_Dyn_crab_v2.png" id="6_jo2xm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwgsw"]
 texture = ExtResource("1_vg1am")
@@ -100,4 +100,4 @@ position = Vector2(1, 0)
 position = Vector2(80, 380)
 rotation = 1.5708
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("4_yp5gq")
+texture = ExtResource("6_jo2xm")
