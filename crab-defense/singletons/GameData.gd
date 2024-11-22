@@ -18,5 +18,11 @@ var tower_data = {
 		"rof": 2,
 		"range": 700,
 		"category": "projectile",
+		"cost": "100"},
+	"Gun4T1": {
+		"damage": 15,
+		"rof": 0.2,
+		"range": 700,
+		"category": "projectile",
 		"cost": "100"}
 }

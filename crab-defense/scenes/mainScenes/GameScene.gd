@@ -11,6 +11,7 @@ var build_location
 var build_type
 
 var current_wave = 0
+var wave_tracker = 0
 var enemies_in_wave = 0
 
 var base_health = 100
@@ -19,6 +20,7 @@ var dmg_in_round = 0
 var money = 100
 var coords
 
+var crab_moved
 var crab_position
 
 func _ready():
@@ -36,7 +38,7 @@ func _process(delta):
 	
 	coords = map_node.get_node("TowerExclusion").local_to_map(get_global_mouse_position())
 	
-	get_node("UI/HUD/InfoBar/H/coords").text = str(coords)
+	get_node("UI/HUD/InfoBar/H/coords").text = str(wave_tracker)
 	
 	if enemies_in_wave <= 0 && current_wave != 0 && wave_over == false:
 		print("wave ended")
@@ -63,15 +65,14 @@ func update_tower_preview():
 	var mouse_position = get_local_mouse_position()
 	var current_tile = map_node.get_node("TowerExclusion").local_to_map(mouse_position)
 	var title_position = map_node.get_node("TowerExclusion").map_to_local(current_tile)
-	
 	if map_node.get_node("TowerExclusion").get_cell_source_id(current_tile) == -1:
-		get_node("UI").update_tower_preview(title_position, "adff4545")
+		get_node("UI").update_tower_preview(title_position-Vector2(192*wave_tracker,0), "adff4545")
 		build_valid = true 
 		build_location = title_position
 		build_tile = current_tile
 	
 	else:
-		get_node("UI").update_tower_preview(title_position, "ad54ff3c")
+		get_node("UI").update_tower_preview(title_position-Vector2(192*wave_tracker,0), "ad54ff3c")
 		build_valid = false
 
 func cancel_build_mode():
@@ -98,11 +99,26 @@ func verify_and_build():
 func start_next_wave():
 	var wave_data = retrieve_wave_data()
 	await get_tree().create_timer(0.5).timeout
+	wave_tracker += 1
+	print(wave_tracker)
 	spawn_enemies(wave_data)
 	
 func retrieve_wave_data():
-	var wave_data = [["SeaUrchin",1.0],["Lizard",1.0],["Snake",1.0],["Spider",1.0],["SeaUrchin",1.0]]
+	var wave_data = [[],[],[],[],[]]
+	for i in wave_data:
+		randomize()
+		var rand_enemy = randi() %6
+		print("the enemy rand value is ", rand_enemy)
+		if rand_enemy == 0 || rand_enemy == 1:
+			i.assign(["SeaUrchin", 1.0])
+		elif rand_enemy == 2 || rand_enemy == 3:
+			i.assign(["Snake", 1.0])
+		elif rand_enemy == 4:
+			i.assign(["Spider", 1.0])
+		else:
+			i.assign(["Lizard", 1.0])
 	enemies_in_wave = wave_data.size() * (current_wave+1)
+	print("there are ", enemies_in_wave)
 	return wave_data
 
 func spawn_enemies(wave_data):
@@ -115,7 +131,6 @@ func spawn_enemies(wave_data):
 			new_enemy.enemy_died.connect(on_enemy_died)
 			
 			map_node.get_node("path" + str(rand_path)).add_child(new_enemy, true)
-			print("i spawned!")
 			await get_tree().create_timer(i[1]).timeout
 	current_wave += 1
 	print("We are on wave ", current_wave)
@@ -130,8 +145,9 @@ func wave_end():
 	
 	for i in 3:
 		get_node("Map1/path" + str(i + 1)).global_position += Vector2(192,0) #moves paths
-	if get_node("Map1/crab").global_position.x >= 150:
+	if get_node("Map1/crab").global_position.x >= 200:
 		get_node("Camera2D").global_position += Vector2(192,0) #moves camera
+		crab_moved = true
 	dmg_in_round = 0
 	await get_tree().create_timer(0.5).timeout
 	$UI._on_pause_play_pressed()
@@ -140,7 +156,6 @@ func wave_end():
 func on_enemy_died():
 	enemies_in_wave -= 1
 	money += 25
-	print(enemies_in_wave)
 
 func on_base_damage(damage):
 	base_health -= damage
