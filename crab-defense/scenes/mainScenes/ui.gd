@@ -24,17 +24,14 @@ func set_tower_preview(tower_type, mouse_position):
 	move_child(get_node("TowerPreview"), 0)
 
 func update_tower_preview(new_position, color):
-	if get_parent().wave_tracker == 0:
-		get_node("TowerPreview").set_global_position(new_position)
-		if get_node("TowerPreview/DragTower").modulate != Color(color):
-			get_node("TowerPreview/DragTower").modulate = Color(color)
-			get_node("TowerPreview/Sprite2D").modulate = Color(color)
-	elif get_parent().crab_moved == null:
+	if get_parent().current_wave < 2:
+		print("success")
 		get_node("TowerPreview").set_global_position(new_position)
 		if get_node("TowerPreview/DragTower").modulate != Color(color):
 			get_node("TowerPreview/DragTower").modulate = Color(color)
 			get_node("TowerPreview/Sprite2D").modulate = Color(color)
 	else:
+		print("fail")
 		get_node("TowerPreview").set_global_position(new_position+Vector2(192,0))
 		if get_node("TowerPreview/DragTower").modulate != Color(color):
 			get_node("TowerPreview/DragTower").modulate = Color(color)
@@ -49,10 +46,10 @@ func _on_pause_play_pressed():
 		get_parent().cancel_build_mode()
 	
 	if get_tree().is_paused(): #plays level
-		if get_parent().current_wave != 0 && get_parent().wave_over == true:
+		if get_parent().current_wave != 0 && get_parent().wave_over == true: # initiate after 
 			get_parent().wave_over = false
 			get_parent().start_next_wave()
-		get_tree().paused = false
+		#get_tree().paused = false
 	elif get_parent().current_wave == 0: # starts first wave
 		get_parent().start_next_wave()
 	elif get_parent().current_wave != 0 && get_parent().get_child_count() == 0: #pauses at the end of each wave

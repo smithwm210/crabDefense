@@ -38,7 +38,7 @@ func _process(delta):
 	
 	coords = map_node.get_node("TowerExclusion").local_to_map(get_global_mouse_position())
 	
-	get_node("UI/HUD/InfoBar/H/coords").text = str(wave_tracker)
+	get_node("UI/HUD/InfoBar/H/coords").text = str(current_wave)
 	
 	if enemies_in_wave <= 0 && current_wave != 0 && wave_over == false:
 		print("wave ended")
@@ -66,13 +66,19 @@ func update_tower_preview():
 	var current_tile = map_node.get_node("TowerExclusion").local_to_map(mouse_position)
 	var title_position = map_node.get_node("TowerExclusion").map_to_local(current_tile)
 	if map_node.get_node("TowerExclusion").get_cell_source_id(current_tile) == -1:
-		get_node("UI").update_tower_preview(title_position-Vector2(192*wave_tracker,0), "adff4545")
+		var location = 192*current_wave
+		if location < 193:
+			location = 0
+		get_node("UI").update_tower_preview(title_position-Vector2(location,0), "adff4545")
 		build_valid = true 
 		build_location = title_position
 		build_tile = current_tile
 	
 	else:
-		get_node("UI").update_tower_preview(title_position-Vector2(192*wave_tracker,0), "ad54ff3c")
+		var location = 192*current_wave
+		if location < 193:
+			location = 0
+		get_node("UI").update_tower_preview(title_position-Vector2(location,0), "ad54ff3c")
 		build_valid = false
 
 func cancel_build_mode():
@@ -99,8 +105,6 @@ func verify_and_build():
 func start_next_wave():
 	var wave_data = retrieve_wave_data()
 	await get_tree().create_timer(0.5).timeout
-	wave_tracker += 1
-	print(wave_tracker)
 	spawn_enemies(wave_data)
 	
 func retrieve_wave_data():
@@ -122,7 +126,9 @@ func retrieve_wave_data():
 	return wave_data
 
 func spawn_enemies(wave_data):
-	for j in current_wave+1:
+	current_wave += 1
+	print("We are on wave ", current_wave)
+	for j in current_wave:
 		for i in wave_data:
 			randomize()
 			var rand_path = (randi() %3) + 1
@@ -132,8 +138,6 @@ func spawn_enemies(wave_data):
 			
 			map_node.get_node("path" + str(rand_path)).add_child(new_enemy, true)
 			await get_tree().create_timer(i[1]).timeout
-	current_wave += 1
-	print("We are on wave ", current_wave)
 
 func wave_end():
 	if current_wave == 5:

@@ -6,6 +6,7 @@ signal enemy_died
 
 var speed = 60
 var hp = 150
+var dead = false
 
 @onready var health_bar = get_node("HealthBar")
 @onready var impact_area = get_node("Impact")
@@ -32,7 +33,8 @@ func on_hit(damage):
 	impact()
 	hp -= damage
 	health_bar.value = hp
-	if hp <= 0:
+	if hp <= 0 && dead == false:
+		dead = true
 		on_destroy()
 
 func impact():
