@@ -4,6 +4,7 @@ extends PathFollow2D
 signal base_damage(damage)
 signal enemy_died
 
+var dead = false
 var speed = 75
 var hp = 100
 
@@ -32,7 +33,8 @@ func on_hit(damage):
 	impact()
 	hp -= damage
 	health_bar.value = hp
-	if hp <= 0:
+	if hp <= 0 && dead == false:
+		dead = true
 		on_destroy()
 
 func impact():
