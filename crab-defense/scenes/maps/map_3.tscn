@@ -56,19 +56,19 @@ sources/4 = SubResource("TileSetAtlasSource_pjdwx")
 
 [sub_resource type="Curve2D" id="Curve2D_ba8at"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1346, 380, 0, 0, 0, 0, 77, 380)
+"points": PackedVector2Array(0, 0, 0, 0, 1441, 380, 0, 0, 0, 0, 77, 380)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_yj4oj"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1342, 239, 0, 0, 0, 0, 79, 378)
+"points": PackedVector2Array(0, 0, 0, 0, 1444, 227, 0, 0, 0, 0, 79, 378)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_gx43l"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1342, 531, 0, 0, 0, 0, 79, 380)
+"points": PackedVector2Array(0, 0, 0, 0, 1454, 551, 0, 0, 0, 0, 79, 380)
 }
 point_count = 2
 

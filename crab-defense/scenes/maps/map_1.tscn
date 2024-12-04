@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://ctenm5wnp2dtp"]
+[gd_scene load_steps=18 format=4 uid="uid://ctenm5wnp2dtp"]
 
 [ext_resource type="Texture2D" uid="uid://cbfs7cyaayxy5" path="res://assets/environment/tilesets/terrainTiles_default.png" id="1_vg1am"]
 [ext_resource type="Texture2D" uid="uid://d046vtldubtue" path="res://assets/environment/tilesets/CRAB_Env_Sand_v1.png" id="2_2it2y"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ddd7142p3w70a" path="res://assets/environment/tilesets/CRAB_Env_CliffwithSand_v1.png" id="4_0dd14"]
 [ext_resource type="Texture2D" uid="uid://b6tn32ibgceg6" path="res://assets/enemies/CRAB_Dyn_crab_v1.png" id="4_yp5gq"]
 [ext_resource type="Texture2D" uid="uid://blnfthq0ou7lh" path="res://assets/environment/tilesets/CRAB_Env_Cliff_v1.png" id="5_a4ey2"]
+[ext_resource type="Texture2D" uid="uid://ccva1v86uppli" path="res://assets/environment/tilesets/CRAB_Env_Bridge_v1.png" id="6_f0h6p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwgsw"]
 texture = ExtResource("1_vg1am")
@@ -46,6 +47,10 @@ texture = ExtResource("5_a4ey2")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vflm2"]
+texture = ExtResource("6_f0h6p")
+texture_region_size = Vector2i(64, 64)
+
 [sub_resource type="TileSet" id="TileSet_ky0ye"]
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_pwgsw")
@@ -53,22 +58,23 @@ sources/1 = SubResource("TileSetAtlasSource_n3pjn")
 sources/2 = SubResource("TileSetAtlasSource_07r61")
 sources/3 = SubResource("TileSetAtlasSource_c5jly")
 sources/4 = SubResource("TileSetAtlasSource_pjdwx")
+sources/9 = SubResource("TileSetAtlasSource_vflm2")
 
 [sub_resource type="Curve2D" id="Curve2D_ba8at"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1346, 380, 0, 0, 0, 0, 77, 380)
+"points": PackedVector2Array(0, 0, 0, 0, 1440, 381, 0, 0, 0, 0, 77, 380)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_yj4oj"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1342, 239, 0, 0, 0, 0, 79, 378)
+"points": PackedVector2Array(0, 0, 0, 0, 1447, 219, 0, 0, 0, 0, 79, 378)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_gx43l"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1342, 531, 0, 0, 0, 0, 79, 380)
+"points": PackedVector2Array(0, 0, 0, 0, 1442, 545, 0, 0, 0, 0, 79, 380)
 }
 point_count = 2
 
