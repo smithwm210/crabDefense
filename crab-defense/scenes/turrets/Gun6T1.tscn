@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=9 format=3 uid="uid://d2u0d8sc7i1w2"]
-=======
 [gd_scene load_steps=9 format=3 uid="uid://dk58y5ufksiun"]
->>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://scenes/turrets/Gun6T1.gd" id="1_l6ymd"]
 [ext_resource type="Texture2D" uid="uid://bf21o4m6rae0w" path="res://assets/towers/towerDefense_tile181.png" id="2_btmjp"]
