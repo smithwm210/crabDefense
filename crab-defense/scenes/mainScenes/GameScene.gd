@@ -159,7 +159,7 @@ func wave_end():
 
 func on_enemy_died():
 	enemies_in_wave -= 1
-	money += 15
+	money += 25
 
 func on_base_damage(damage):
 	base_health -= damage

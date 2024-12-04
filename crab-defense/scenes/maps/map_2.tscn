@@ -1,14 +1,14 @@
-[gd_scene load_steps=16 format=4 uid="uid://ctenm5wnp2dtp"]
+[gd_scene load_steps=16 format=4 uid="uid://efqhr7jxig1e"]
 
-[ext_resource type="Texture2D" uid="uid://cbfs7cyaayxy5" path="res://assets/environment/tilesets/terrainTiles_default.png" id="1_vg1am"]
-[ext_resource type="Texture2D" uid="uid://d046vtldubtue" path="res://assets/environment/tilesets/CRAB_Env_Sand_v1.png" id="2_2it2y"]
-[ext_resource type="Texture2D" uid="uid://d22qkfifgouef" path="res://assets/environment/tilesets/Obstructed.png" id="3_u88qj"]
-[ext_resource type="Texture2D" uid="uid://ddd7142p3w70a" path="res://assets/environment/tilesets/CRAB_Env_CliffwithSand_v1.png" id="4_0dd14"]
-[ext_resource type="Texture2D" uid="uid://b6tn32ibgceg6" path="res://assets/enemies/CRAB_Dyn_crab_v1.png" id="4_yp5gq"]
-[ext_resource type="Texture2D" uid="uid://blnfthq0ou7lh" path="res://assets/environment/tilesets/CRAB_Env_Cliff_v1.png" id="5_a4ey2"]
+[ext_resource type="Texture2D" uid="uid://cbfs7cyaayxy5" path="res://assets/environment/tilesets/terrainTiles_default.png" id="1_4qbxr"]
+[ext_resource type="Texture2D" uid="uid://d046vtldubtue" path="res://assets/environment/tilesets/CRAB_Env_Sand_v1.png" id="2_awoqg"]
+[ext_resource type="Texture2D" uid="uid://d22qkfifgouef" path="res://assets/environment/tilesets/Obstructed.png" id="3_7bt4n"]
+[ext_resource type="Texture2D" uid="uid://ddd7142p3w70a" path="res://assets/environment/tilesets/CRAB_Env_CliffwithSand_v1.png" id="4_nnjdk"]
+[ext_resource type="Texture2D" uid="uid://blnfthq0ou7lh" path="res://assets/environment/tilesets/CRAB_Env_Cliff_v1.png" id="5_g1oo1"]
+[ext_resource type="Texture2D" uid="uid://b6tn32ibgceg6" path="res://assets/enemies/CRAB_Dyn_crab_v1.png" id="6_jsvm2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwgsw"]
-texture = ExtResource("1_vg1am")
+texture = ExtResource("1_4qbxr")
 texture_region_size = Vector2i(64, 64)
 0:2/0 = 0
 0:3/0 = 0
@@ -26,23 +26,23 @@ texture_region_size = Vector2i(64, 64)
 6:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3pjn"]
-texture = ExtResource("2_2it2y")
+texture = ExtResource("2_awoqg")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_07r61"]
-texture = ExtResource("3_u88qj")
+texture = ExtResource("3_7bt4n")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c5jly"]
-texture = ExtResource("4_0dd14")
+texture = ExtResource("4_nnjdk")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pjdwx"]
-texture = ExtResource("5_a4ey2")
+texture = ExtResource("5_g1oo1")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
@@ -100,4 +100,4 @@ position = Vector2(1, 0)
 position = Vector2(80, 380)
 rotation = 1.5708
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("4_yp5gq")
+texture = ExtResource("6_jsvm2")

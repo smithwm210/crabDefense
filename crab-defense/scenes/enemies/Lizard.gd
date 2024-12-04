@@ -34,6 +34,7 @@ func on_hit(damage):
 	hp -= damage
 	health_bar.value = hp
 	if hp <= 0 && dead == false:
+		set_progress(get_progress())
 		dead = true
 		on_destroy()
 
@@ -48,5 +49,7 @@ func impact():
 
 func on_destroy():
 	get_node("CharacterBody2D/Sprite2D").queue_free()
+	$AudioStreamPlayer.play()
+	await get_tree().create_timer(0.25).timeout
 	enemy_died.emit()
 	self.queue_free()

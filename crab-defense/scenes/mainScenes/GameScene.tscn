@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://pq63cyblqyi8" path="res://assets/Icons/pause.png" id="9_ok1ca"]
 [ext_resource type="Texture2D" uid="uid://kriejg1awqog" path="res://assets/Icons/fastForward.png" id="10_3ntvn"]
 [ext_resource type="FontFile" uid="uid://iw3o4j75jcwf" path="res://resources/fonts/font_ui50.tres" id="11_4vhs7"]
+[ext_resource type="Texture2D" uid="uid://llyllpgvc0ed" path="res://assets/Icons/home.png" id="12_miuy3"]
 [ext_resource type="Texture2D" uid="uid://dqliglvsw8ofm" path="res://assets/UI/HPbar.jpg" id="13_pmmvp"]
-[ext_resource type="Texture2D" uid="uid://bvv0pmxkjp0e1" path="res://assets/UI/CRAB_UI_CrabSymbol_v1.png" id="13_v80a7"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_kt5qk")
@@ -260,30 +260,20 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="coords" type="Label" parent="UI/HUD/InfoBar/H"]
-custom_minimum_size = Vector2(30, 60)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.705882)
-theme_override_fonts/font = ExtResource("11_4vhs7")
-theme_override_font_sizes/font_size = 30
-text = "1"
-vertical_alignment = 1
-
-[node name="display" type="Label" parent="UI/HUD/InfoBar/H"]
 custom_minimum_size = Vector2(110, 60)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.705882)
 theme_override_fonts/font = ExtResource("11_4vhs7")
 theme_override_font_sizes/font_size = 30
-text = "0f  5"
+text = "100"
 vertical_alignment = 1
 
 [node name="Icon" type="TextureRect" parent="UI/HUD/InfoBar/H"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 10
-texture = ExtResource("13_v80a7")
+texture = ExtResource("12_miuy3")
 
 [node name="HP" type="TextureProgressBar" parent="UI/HUD/InfoBar/H"]
 custom_minimum_size = Vector2(400, 30)
