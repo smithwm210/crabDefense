@@ -1,0 +1,157 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2u0d8sc7i1w2"]
+
+[ext_resource type="Script" path="res://scenes/turrets/Gun6T1.gd" id="1_l6ymd"]
+[ext_resource type="Texture2D" uid="uid://bf21o4m6rae0w" path="res://assets/towers/towerDefense_tile181.png" id="2_btmjp"]
+[ext_resource type="Texture2D" uid="uid://eisuy7snl8bp" path="res://assets/towers/CRAB_Dyn_Turret_ElectricA_v1.png" id="3_ppvr0"]
+[ext_resource type="Texture2D" uid="uid://bvvknk4qap2oq" path="res://assets/towers/CRAB_Dyn_Bullet_ElectricA_v1.png" id="4_gccpf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qe8x1"]
+radius = 20.0
+
+[sub_resource type="Animation" id="Animation_lnp1q"]
+length = 0.05
+step = 0.0001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turret/Muzzle/MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0001, 0.06),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Turret/Muzzle/MuzzleFlash2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0001, 0.06),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Turret/Muzzle/MuzzleFlash3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0003, 0.075),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Turret/Muzzle/MuzzleFlash4:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0001, 0.0421),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Turret/Muzzle/MuzzleFlash5:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0001, 0.0521),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_io14e"]
+resource_name = "fire"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turret/Muzzle/MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.001, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tygh2"]
+_data = {
+"RESET": SubResource("Animation_lnp1q"),
+"fire": SubResource("Animation_io14e")
+}
+
+[node name="Gun6T1" type="Node2D"]
+script = ExtResource("1_l6ymd")
+
+[node name="Base" type="Sprite2D" parent="."]
+position = Vector2(-2, 1)
+texture = ExtResource("2_btmjp")
+
+[node name="Turret" type="Sprite2D" parent="."]
+position = Vector2(35, -3)
+rotation = 1.5708
+scale = Vector2(0.212059, 0.212059)
+texture = ExtResource("3_ppvr0")
+offset = Vector2(12, 0)
+
+[node name="Muzzle" type="Node2D" parent="Turret"]
+position = Vector2(14.147, -216.921)
+
+[node name="MuzzleFlash" type="Sprite2D" parent="Turret/Muzzle"]
+position = Vector2(-84.6778, -50.1411)
+rotation = 2.86046
+scale = Vector2(0.79616, 0.848276)
+texture = ExtResource("4_gccpf")
+
+[node name="MuzzleFlash2" type="Sprite2D" parent="Turret/Muzzle"]
+position = Vector2(70.9395, -45.4254)
+rotation = 0.378049
+scale = Vector2(0.77709, -0.778909)
+texture = ExtResource("4_gccpf")
+
+[node name="MuzzleFlash3" type="Sprite2D" parent="Turret/Muzzle"]
+position = Vector2(-4.51132, -87.8666)
+rotation = -0.124512
+scale = Vector2(1.1646, -1.16733)
+texture = ExtResource("4_gccpf")
+
+[node name="MuzzleFlash4" type="Sprite2D" parent="Turret/Muzzle"]
+position = Vector2(33.214, 53.6038)
+rotation = -0.0976741
+scale = Vector2(0.647526, 0.562797)
+texture = ExtResource("4_gccpf")
+
+[node name="MuzzleFlash5" type="Sprite2D" parent="Turret/Muzzle"]
+position = Vector2(-51.6681, 48.8882)
+rotation = 0.502929
+scale = Vector2(-0.546182, 0.571372)
+texture = ExtResource("4_gccpf")
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_qe8x1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tygh2")
+}
+
+[connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]
