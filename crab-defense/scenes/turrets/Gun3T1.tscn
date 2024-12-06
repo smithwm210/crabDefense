@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bn4f58giwh25r"]
+[gd_scene load_steps=10 format=3 uid="uid://bn4f58giwh25r"]
 
 [ext_resource type="Texture2D" uid="uid://bf21o4m6rae0w" path="res://assets/towers/towerDefense_tile181.png" id="1_8h6ht"]
 [ext_resource type="Script" path="res://scenes/turrets/Gun3T1.gd" id="1_dr24t"]
 [ext_resource type="Texture2D" uid="uid://cictlbfrmmauh" path="res://assets/towers/CRAB_Dyn_Turret_EarthA_v2.png" id="2_dyf5n"]
 [ext_resource type="Texture2D" uid="uid://du2sbkoa02xyg" path="res://assets/effects/towerDefense_tile298.png" id="4_qupug"]
+[ext_resource type="AudioStream" uid="uid://b3oxndhcvac16" path="res://assets/sounds/turrets/CRAB_SFX_EarthTurret_v1.mp3" id="5_j0phn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_23ajv"]
 radius = 20.0
@@ -75,6 +76,10 @@ shape = SubResource("CircleShape2D_23ajv")
 libraries = {
 "": SubResource("AnimationLibrary_3iqaj")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_j0phn")
+volume_db = -5.0
 
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]

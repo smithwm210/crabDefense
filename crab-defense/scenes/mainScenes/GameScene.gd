@@ -96,6 +96,7 @@ func verify_and_build():
 		map_node.get_node("Turrets").add_child(new_tower, true)
 		map_node.get_node("TowerExclusion").set_cell(build_tile, 0, Vector2(1, 0))
 		money -= int(GameData.tower_data[build_type]["cost"])
+		$TurretPlace.play()
 
 
 ##
@@ -144,7 +145,6 @@ func wave_end():
 		game_finished.emit("You Won!!!")
 	wave_over = true
 	$UI.get_node("HUD/GameControls/PausePlay").set_pressed(false) #sets play button to standard
-	
 	get_node("Map1/crab").global_position += Vector2(192,0) #moves crab
 	
 	for i in 3:
@@ -153,7 +153,7 @@ func wave_end():
 		get_node("Camera2D").global_position += Vector2(192,0) #moves camera
 		crab_moved = true
 	dmg_in_round = 0
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(3).timeout
 	$UI._on_pause_play_pressed()
 	
 
