@@ -49,6 +49,7 @@ func impact():
 
 func on_destroy():
 	get_node("CharacterBody2D/Sprite2D").queue_free()
+	get_node("HealthBar").visible = false
 	$AudioStreamPlayer.play()
 	await get_tree().create_timer(0.5).timeout
 	enemy_died.emit(false)
