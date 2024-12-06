@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://4i25rfd43nrv"]
+[gd_scene load_steps=17 format=3 uid="uid://4i25rfd43nrv"]
 
 [ext_resource type="Script" path="res://scenes/mainScenes/GameScene.gd" id="1_kt5qk"]
 [ext_resource type="PackedScene" uid="uid://ctenm5wnp2dtp" path="res://scenes/maps/map_1.tscn" id="2_ykfvm"]
@@ -15,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://iw3o4j75jcwf" path="res://resources/fonts/font_ui50.tres" id="11_4vhs7"]
 [ext_resource type="Texture2D" uid="uid://llyllpgvc0ed" path="res://assets/Icons/home.png" id="12_miuy3"]
 [ext_resource type="Texture2D" uid="uid://dqliglvsw8ofm" path="res://assets/UI/HPbar.jpg" id="13_pmmvp"]
+[ext_resource type="AudioStream" uid="uid://fbtllpkq1dwt" path="res://assets/sounds/CRAB_SFX_Place_v1.mp3" id="16_3oad8"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_kt5qk")
@@ -124,21 +125,6 @@ size_flags_horizontal = 4
 texture_normal = ExtResource("3_y4yee")
 stretch_mode = 0
 
-[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = 56.0
-offset_right = 11.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.603405
-texture = ExtResource("8_y8eva")
-expand_mode = 1
-
 [node name="Label" type="Label" parent="UI/HUD/BuildBar/Gun3"]
 layout_mode = 0
 offset_left = 5.0
@@ -149,25 +135,7 @@ theme_override_fonts/font = ExtResource("11_4vhs7")
 theme_override_font_sizes/font_size = 20
 text = "100"
 
-[node name="Gun4" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
-process_mode = 3
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-texture_normal = ExtResource("3_y4yee")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="UI/HUD/BuildBar/Gun4"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 3.0
-offset_right = 45.0
-offset_bottom = 26.0
-theme_override_fonts/font = ExtResource("11_4vhs7")
-theme_override_font_sizes/font_size = 20
-text = "100"
-
-[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun4"]
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun3"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -182,6 +150,39 @@ rotation = -0.512122
 texture = ExtResource("7_j55ut")
 expand_mode = 1
 
+[node name="Gun4" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+process_mode = 3
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_y4yee")
+stretch_mode = 0
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = 56.0
+offset_right = 11.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.603405
+texture = ExtResource("8_y8eva")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="UI/HUD/BuildBar/Gun4"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 45.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("11_4vhs7")
+theme_override_font_sizes/font_size = 20
+text = "100"
+
 [node name="Gun5" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
 process_mode = 3
 custom_minimum_size = Vector2(80, 80)
@@ -195,13 +196,12 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 66.0
-offset_top = 2.0
-offset_right = 7.0
-offset_bottom = 3.0
+offset_left = 3.0
+offset_top = 51.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 0.899353
+rotation = -0.671952
 texture = ExtResource("10_se4yy")
 expand_mode = 1
 
@@ -326,6 +326,9 @@ tint_progress = Color(0, 0.7329, 0.157312, 1)
 [node name="Control" type="Control" parent="UI/HUD/InfoBar/H"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
+
+[node name="TurretPlace" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_3oad8")
 
 [connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/SpeedUp" to="UI" method="_on_speed_up_pressed"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/enemies/Spider.gd" id="1_at1yt"]
 [ext_resource type="Texture2D" uid="uid://bninhgx6c7cf0" path="res://assets/enemies/CRAB_Dyn_spider_v1.png" id="2_nf87h"]
 [ext_resource type="Texture2D" uid="uid://dqliglvsw8ofm" path="res://assets/UI/HPbar.jpg" id="3_vtwp3"]
-[ext_resource type="AudioStream" uid="uid://bj6bvc7xxsp46" path="res://assets/sounds/CRAB_SFX_EnemyDeath_v1.mp3" id="4_iket0"]
+[ext_resource type="AudioStream" uid="uid://blgek0h8nsbbf" path="res://assets/sounds/CRAB_SFX_EnemyDeath_v2.mp3" id="4_yc62o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fijd"]
 radius = 21.5058
@@ -45,4 +45,4 @@ tint_progress = Color(0, 0.59492, 0.253483, 1)
 position = Vector2(-14, -14)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_iket0")
+stream = ExtResource("4_yc62o")

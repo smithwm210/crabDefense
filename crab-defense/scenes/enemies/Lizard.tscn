@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/enemies/Lizard.gd" id="1_s1gk8"]
 [ext_resource type="Texture2D" uid="uid://c25wi20hjmr2j" path="res://assets/enemies/CRAB_Dyn_Lizard_v1.png" id="2_s7xp5"]
 [ext_resource type="Texture2D" uid="uid://dqliglvsw8ofm" path="res://assets/UI/HPbar.jpg" id="3_tcktl"]
-[ext_resource type="AudioStream" uid="uid://bj6bvc7xxsp46" path="res://assets/sounds/CRAB_SFX_EnemyDeath_v1.mp3" id="4_ur7q3"]
+[ext_resource type="AudioStream" uid="uid://blgek0h8nsbbf" path="res://assets/sounds/CRAB_SFX_EnemyDeath_v2.mp3" id="4_she6l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o57ui"]
 radius = 9.0
@@ -48,4 +48,4 @@ tint_progress = Color(0, 0.59492, 0.253483, 1)
 position = Vector2(-32.6667, -10.6667)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_ur7q3")
+stream = ExtResource("4_she6l")
