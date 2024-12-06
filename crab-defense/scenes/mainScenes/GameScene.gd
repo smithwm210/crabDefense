@@ -141,7 +141,9 @@ func spawn_enemies(wave_data):
 			await get_tree().create_timer(i[1]).timeout
 
 func wave_end():
-	if current_wave == 5:
+	if current_wave == 10:
+		$UI.get_node("HUD/win").visible = true
+		await get_tree().create_timer(3).timeout
 		game_finished.emit("You Won!!!")
 	wave_over = true
 	$UI.get_node("HUD/GameControls/PausePlay").set_pressed(false) #sets play button to standard
@@ -153,13 +155,18 @@ func wave_end():
 		get_node("Camera2D").global_position += Vector2(192,0) #moves camera
 		crab_moved = true
 	dmg_in_round = 0
-	await get_tree().create_timer(3).timeout
-	$UI._on_pause_play_pressed()
+	#await get_tree().create_timer(3).timeout
+	#$UI._on_pause_play_pressed()
 	
 
-func on_enemy_died():
+##
+## Enemy Functions
+##
+
+func on_enemy_died(hit):
 	enemies_in_wave -= 1
-	money += 25
+	if hit == false:
+		money += 15
 
 func on_base_damage(damage):
 	base_health -= damage

@@ -115,7 +115,7 @@ offset_right = 45.0
 offset_bottom = 26.0
 theme_override_fonts/font = ExtResource("11_4vhs7")
 theme_override_font_sizes/font_size = 20
-text = "75"
+text = "100"
 
 [node name="Gun3" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
 process_mode = 3
@@ -326,6 +326,27 @@ tint_progress = Color(0, 0.7329, 0.157312, 1)
 [node name="Control" type="Control" parent="UI/HUD/InfoBar/H"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
+
+[node name="win" type="Label" parent="UI/HUD"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -11.5
+offset_right = 34.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_4vhs7")
+theme_override_font_sizes/font_size = 150
+text = "You Won!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TurretPlace" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_3oad8")

@@ -20,7 +20,7 @@ func _ready():
 func _physics_process(delta):
 	if progress_ratio == 1.0:
 		emit_signal("base_damage", 21)
-		enemy_died.emit()
+		enemy_died.emit(true)
 		queue_free()
 	move(delta)
 
@@ -51,5 +51,5 @@ func on_destroy():
 	get_node("CharacterBody2D/Sprite2D").queue_free()
 	$AudioStreamPlayer.play()
 	await get_tree().create_timer(0.5).timeout
-	enemy_died.emit()
+	enemy_died.emit(false)
 	self.queue_free()

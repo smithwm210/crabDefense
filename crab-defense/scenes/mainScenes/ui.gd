@@ -43,15 +43,18 @@ func _on_pause_play_pressed():
 	if get_parent().build_mode:
 		get_parent().cancel_build_mode()
 	
+	if get_parent().current_wave != 0 && get_parent().wave_over == true: # initiate after 
+		get_parent().wave_over = false
+		get_parent().start_next_wave()
+		return
+		
 	if get_tree().is_paused(): #plays level
-		if get_parent().current_wave != 0 && get_parent().wave_over == true: # initiate after 
-			get_parent().wave_over = false
-			get_parent().start_next_wave()
 		get_tree().paused = false
 	elif get_parent().current_wave == 0: # starts first wave
 		get_parent().start_next_wave()
 	elif get_parent().current_wave != 0 && get_parent().get_child_count() == 0: #pauses at the end of each wave
-		get_tree().paused = true
+		print("we are in between waves")
+		#get_tree().paused = true
 	else: #pauses level
 		get_tree().paused = true 
 
