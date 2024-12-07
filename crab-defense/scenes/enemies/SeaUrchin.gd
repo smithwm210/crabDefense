@@ -5,7 +5,7 @@ signal base_damage(damage)
 signal enemy_died
 
 var dead = false
-var speed = 100
+var speed = 150
 var hp = 100
 var payout = 15
 

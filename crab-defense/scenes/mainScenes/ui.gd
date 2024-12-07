@@ -61,10 +61,10 @@ func _on_pause_play_pressed():
 func _on_speed_up_pressed():
 	if get_parent().build_mode:
 		get_parent().cancel_build_mode()
-	if Engine.get_time_scale() == 2.0:
+	if Engine.get_time_scale() == 2.5:
 		Engine.set_time_scale(1.0)
 	else:
-		Engine.set_time_scale(2.0)
+		Engine.set_time_scale(2.5)
 		
 
 

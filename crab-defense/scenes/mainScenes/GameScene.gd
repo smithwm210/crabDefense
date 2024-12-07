@@ -17,7 +17,7 @@ var enemies_in_wave = 0
 var base_health = 100
 var wave_over = false
 var dmg_in_round = 0
-var money = 100
+var money = 150
 var coords
 
 var crab_moved
@@ -66,8 +66,8 @@ func update_tower_preview():
 	var current_tile = map_node.get_node("TowerExclusion").local_to_map(mouse_position)
 	var title_position = map_node.get_node("TowerExclusion").map_to_local(current_tile)
 	if map_node.get_node("TowerExclusion").get_cell_source_id(current_tile) == -1:
-		var location = 192*current_wave
-		if location < 193:
+		var location = 256*current_wave
+		if location < 257:
 			location = 0
 		get_node("UI").update_tower_preview(title_position-Vector2(location,0), "adff4545")
 		build_valid = true 
@@ -75,8 +75,8 @@ func update_tower_preview():
 		build_tile = current_tile
 	
 	else:
-		var location = 192*current_wave
-		if location < 193:
+		var location = 256*current_wave
+		if location < 257:
 			location = 0
 		get_node("UI").update_tower_preview(title_position-Vector2(location,0), "ad54ff3c")
 		build_valid = false
@@ -106,7 +106,7 @@ func verify_and_build():
 		print("You have placed " + str(type_count) + " of that kind of turret")
 		var next_cost = base_cost + ((base_cost/2) * type_count)
 		print("next cost: ", next_cost)
-		get_node("UI/HUD/BuildBar/Gun/Label").text = str(next_cost)
+		get_node("UI/HUD/BuildBar/Gun" + GameData.tower_data[build_type]["label"] + "/Label").text = str(next_cost)
 		$TurretPlace.play()
 
 
@@ -123,16 +123,24 @@ func retrieve_wave_data():
 	var wave_data = [[],[],[],[],[]]
 	for i in wave_data:
 		randomize()
-		var rand_enemy = randi() %6
+		var rand_enemy = randi() %100
 		print("the enemy rand value is ", rand_enemy)
-		if rand_enemy == 0 || rand_enemy == 1:
-			i.assign(["SeaUrchin", 1.0])
-		elif rand_enemy == 2 || rand_enemy == 3:
-			i.assign(["Snake", 1.0])
-		elif rand_enemy == 4:
-			i.assign(["Spider", 1.0])
+		if rand_enemy <= 40:
+			i.assign(["SeaUrchin", 1.0]) #40%
+		elif rand_enemy <= 73:
+			i.assign(["Snake", 1.0]) #33%
+		elif rand_enemy <= 85:
+			i.assign(["Spider", 1.0]) #12%
 		else:
-			i.assign(["Lizard", 1.0])
+			i.assign(["Lizard", 1.0]) #15%
+		#if rand_enemy == 0 || rand_enemy == 1:
+			#i.assign(["SeaUrchin", 1.0])
+		#elif rand_enemy == 2 || rand_enemy == 3:
+			#i.assign(["Snake", 1.0])
+		#elif rand_enemy == 4:
+			#i.assign(["Spider", 1.0])
+		#else:
+			#i.assign(["Lizard", 1.0])
 	enemies_in_wave = wave_data.size() * (current_wave+1)
 	print("there are ", enemies_in_wave)
 	return wave_data
@@ -152,18 +160,18 @@ func spawn_enemies(wave_data):
 			await get_tree().create_timer(i[1]).timeout
 
 func wave_end():
-	if current_wave == 10:
+	if current_wave == 15:
 		$UI.get_node("HUD/win").visible = true
 		await get_tree().create_timer(3).timeout
 		game_finished.emit("You Won!!!")
 	wave_over = true
 	$UI.get_node("HUD/GameControls/PausePlay").set_pressed(false) #sets play button to standard
-	get_node("Map1/crab").global_position += Vector2(192,0) #moves crab
+	get_node("Map1/crab").global_position += Vector2(256,0) #moves crab
 	
 	for i in 3:
-		get_node("Map1/path" + str(i + 1)).global_position += Vector2(192,0) #moves paths
+		get_node("Map1/path" + str(i + 1)).global_position += Vector2(256,0) #moves paths
 	if get_node("Map1/crab").global_position.x >= 200:
-		get_node("Camera2D").global_position += Vector2(192,0) #moves camera
+		get_node("Camera2D").global_position += Vector2(256,0) #moves camera
 		crab_moved = true
 	dmg_in_round = 0
 	#await get_tree().create_timer(3).timeout

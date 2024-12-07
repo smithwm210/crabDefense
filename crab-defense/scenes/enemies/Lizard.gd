@@ -4,7 +4,7 @@ extends PathFollow2D
 signal base_damage(damage)
 signal enemy_died
 
-var speed = 35
+var speed = 40
 var hp = 500
 var dead = false
 var payout = 50
