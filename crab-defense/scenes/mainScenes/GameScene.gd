@@ -87,7 +87,11 @@ func cancel_build_mode():
 	get_node("UI/TowerPreview").free()
 
 func verify_and_build():
-	if build_valid && money >= int(GameData.tower_data[build_type]["cost"]):
+	var base_cost = GameData.tower_data[build_type]["cost"]
+	var type_count = GameData.tower_data[build_type]["num_placed"]
+	var cur_cost = base_cost + ((base_cost/2) * type_count)
+	print("costs ", cur_cost)
+	if build_valid && money >= cur_cost:
 		var new_tower = load("res://scenes/turrets/" + build_type + ".tscn").instantiate()
 		new_tower.position = build_location
 		new_tower.built = true
@@ -95,7 +99,14 @@ func verify_and_build():
 		new_tower.category = GameData.tower_data[build_type]["category"]
 		map_node.get_node("Turrets").add_child(new_tower, true)
 		map_node.get_node("TowerExclusion").set_cell(build_tile, 0, Vector2(1, 0))
-		money -= int(GameData.tower_data[build_type]["cost"])
+		money -= cur_cost
+		# increment num_placed for that turret type and update the price UI
+		GameData.tower_data[build_type]["num_placed"] += 1
+		type_count = GameData.tower_data[build_type]["num_placed"]
+		print("You have placed " + str(type_count) + " of that kind of turret")
+		var next_cost = base_cost + ((base_cost/2) * type_count)
+		print("next cost: ", next_cost)
+		get_node("UI/HUD/BuildBar/Gun/Label").text = str(next_cost)
 		$TurretPlace.play()
 
 
@@ -166,6 +177,8 @@ func wave_end():
 func on_enemy_died(hit):
 	enemies_in_wave -= 1
 	if hit == false:
+		#if i can get the enemy type here, i want to do money += enemytype.payout
+		#that way each enemy can give a different amount of money, and we can implement the golden urchin
 		money += 15
 
 func on_base_damage(damage):
