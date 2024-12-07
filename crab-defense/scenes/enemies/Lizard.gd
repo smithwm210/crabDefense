@@ -7,6 +7,7 @@ signal enemy_died
 var speed = 40
 var hp = 500
 var dead = false
+var payout = 50
 
 @onready var health_bar = get_node("HealthBar")
 @onready var impact_area = get_node("Impact")

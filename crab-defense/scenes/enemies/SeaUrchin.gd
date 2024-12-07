@@ -5,8 +5,9 @@ signal base_damage(damage)
 signal enemy_died
 
 var dead = false
-var speed = 75
+var speed = 150
 var hp = 100
+var payout = 15
 
 @onready var health_bar = get_node("HealthBar")
 @onready var impact_area = get_node("Impact")
