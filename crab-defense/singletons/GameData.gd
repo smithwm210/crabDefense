@@ -35,9 +35,9 @@ var tower_data = {
 		"num_placed": 0,
 		"label": "4"},
 	"Gun5T1": { #--== electric ==--
-		"damage": 30,
+		"damage": 45,
 		"rof": 0.5,
-		"range": 550,
+		"range": 500,
 		"category": "projectile",
 		"cost": 100,
 		"num_placed": 0,

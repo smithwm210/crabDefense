@@ -5,7 +5,7 @@ signal base_damage(damage)
 signal enemy_died
 
 var dead = false
-var speed = 150
+var speed = 145
 var hp = 100
 var payout = 15
 
@@ -20,7 +20,7 @@ func _ready():
 
 func _physics_process(delta):
 	if progress_ratio == 1.0:
-		emit_signal("base_damage", 21)
+		emit_signal("base_damage", 15)
 		enemy_died.emit(true)
 		queue_free()
 	move(delta)

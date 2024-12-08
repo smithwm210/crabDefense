@@ -4,10 +4,10 @@ extends PathFollow2D
 signal base_damage(damage)
 signal enemy_died
 
-var speed = 40
+var speed = 45
 var hp = 500
 var dead = false
-var payout = 50
+var payout = 30
 
 @onready var health_bar = get_node("HealthBar")
 @onready var impact_area = get_node("Impact")
@@ -20,7 +20,7 @@ func _ready():
 
 func _physics_process(delta):
 	if progress_ratio == 1.0:
-		emit_signal("base_damage", 21)
+		emit_signal("base_damage", 19)
 		enemy_died.emit(true)
 		queue_free()
 	move(delta)

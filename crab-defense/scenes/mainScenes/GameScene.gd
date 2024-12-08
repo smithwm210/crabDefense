@@ -105,7 +105,6 @@ func verify_and_build():
 		type_count = GameData.tower_data[build_type]["num_placed"]
 		print("You have placed " + str(type_count) + " of that kind of turret")
 		var next_cost = base_cost + ((base_cost/2) * type_count)
-		print("next cost: ", next_cost)
 		get_node("UI/HUD/BuildBar/Gun" + GameData.tower_data[build_type]["label"] + "/Label").text = str(next_cost)
 		$TurretPlace.play()
 
@@ -124,25 +123,59 @@ func retrieve_wave_data():
 	for i in wave_data:
 		randomize()
 		var rand_enemy = randi() %100
-		print("the enemy rand value is ", rand_enemy)
-		if rand_enemy <= 40:
-			i.assign(["SeaUrchin", 1.0]) #40%
-		elif rand_enemy <= 73:
-			i.assign(["Snake", 1.0]) #33%
-		elif rand_enemy <= 85:
-			i.assign(["Spider", 1.0]) #12%
-		else:
-			i.assign(["Lizard", 1.0]) #15%
-		#if rand_enemy == 0 || rand_enemy == 1:
-			#i.assign(["SeaUrchin", 1.0])
-		#elif rand_enemy == 2 || rand_enemy == 3:
-			#i.assign(["Snake", 1.0])
-		#elif rand_enemy == 4:
-			#i.assign(["Spider", 1.0])
-		#else:
-			#i.assign(["Lizard", 1.0])
+		match(current_wave):
+			0:
+				if rand_enemy <= 49:
+					i.assign(["SeaUrchin", 1.0]) #49%
+				elif rand_enemy <= 99:
+					i.assign(["Snake", 1.0]) #50%
+				else:
+					i.assign(["GoldUrchin", 1.0]) #1%
+			1: 
+				if rand_enemy <= 53:
+					i.assign(["SeaUrchin", 1.0]) #53%
+				elif rand_enemy <= 88:
+					i.assign(["Snake", 1.0]) #35%
+				elif rand_enemy <= 98:
+					i.assign(["Lizard", 1.0]) #10%
+				else:
+					i.assign(["GoldUrchin", 1.0]) #2%
+			2: 
+				if rand_enemy <= 47:
+					i.assign(["SeaUrchin", 1.0]) #47%
+				elif rand_enemy <= 80:
+					i.assign(["Snake", 1.0]) #33%
+				elif rand_enemy <= 97:
+					i.assign(["Lizard", 1.0]) #17%
+				else:
+					i.assign(["GoldUrchin", 1.0]) #3%
+			3:
+				if rand_enemy <= 67:
+					i.assign(["Snake", 1.0]) #67%
+				else:
+					i.assign(["Spider", 1.0]) #33%
+			7:
+				if rand_enemy <= 63:
+					i.assign(["SeaUrchin", 1.0]) #63%
+				elif rand_enemy <= 96:
+					i.assign(["Spider", 1.0]) #33%
+				else:
+					i.assign(["GoldUrchin", 1.0]) #4%
+			_:
+				if rand_enemy <= 36:
+					i.assign(["SeaUrchin", 1.0]) #36%
+				elif rand_enemy <= 69:
+					i.assign(["Snake", 1.0]) #33%
+				elif rand_enemy <= 79:
+					i.assign(["Spider", 1.0]) #10%
+				elif rand_enemy <= 96:
+					i.assign(["Lizard", 1.0]) #17%
+				else:
+					i.assign(["GoldUrchin", 1.0]) #4%
+			
+
 	enemies_in_wave = wave_data.size() * (current_wave+1)
-	print("there are ", enemies_in_wave)
+	print("there are " + str(enemies_in_wave) + " enemies")
 	return wave_data
 
 func spawn_enemies(wave_data):
@@ -151,6 +184,7 @@ func spawn_enemies(wave_data):
 	for j in current_wave:
 		for i in wave_data:
 			randomize()
+			#make 5 paths
 			var rand_path = (randi() %3) + 1
 			var new_enemy = load("res://scenes/enemies/"+i[0]+".tscn").instantiate()
 			new_enemy.base_damage.connect(on_base_damage)
@@ -163,7 +197,10 @@ func wave_end():
 	if current_wave == 15:
 		$UI.get_node("HUD/win").visible = true
 		await get_tree().create_timer(3).timeout
-		game_finished.emit("You Won!!!")
+		if base_health == 100:
+			game_finished.emit("Perfect!")
+		else:
+			game_finished.emit("You Won!")
 	wave_over = true
 	$UI.get_node("HUD/GameControls/PausePlay").set_pressed(false) #sets play button to standard
 	get_node("Map1/crab").global_position += Vector2(256,0) #moves crab

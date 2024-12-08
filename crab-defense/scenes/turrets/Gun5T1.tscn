@@ -152,8 +152,8 @@ position = Vector2(-2, 1)
 texture = ExtResource("2_jntn0")
 
 [node name="Turret" type="Sprite2D" parent="."]
-position = Vector2(-1, -1.19209e-07)
-scale = Vector2(0.195415, 0.195415)
+position = Vector2(7.15256e-07, 1.42109e-14)
+scale = Vector2(0.172217, 0.195415)
 texture = ExtResource("3_dyvkr")
 offset = Vector2(130, 0)
 

@@ -53,6 +53,7 @@ script = ExtResource("1_xu7ms")
 texture = ExtResource("2_2aaee")
 
 [node name="Turret" type="Sprite2D" parent="."]
+position = Vector2(-3, -2)
 scale = Vector2(0.183, 0.183)
 texture = ExtResource("3_womeq")
 offset = Vector2(50, 0)
