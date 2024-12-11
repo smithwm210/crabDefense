@@ -297,13 +297,23 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="coords" type="Label" parent="UI/HUD/InfoBar/H"]
-custom_minimum_size = Vector2(110, 60)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.705882)
 theme_override_fonts/font = ExtResource("11_4vhs7")
 theme_override_font_sizes/font_size = 30
 text = "100"
+vertical_alignment = 1
+
+[node name="coords2" type="Label" parent="UI/HUD/InfoBar/H"]
+custom_minimum_size = Vector2(110, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.705882)
+theme_override_fonts/font = ExtResource("11_4vhs7")
+theme_override_font_sizes/font_size = 30
+text = "/15"
 vertical_alignment = 1
 
 [node name="Icon" type="TextureRect" parent="UI/HUD/InfoBar/H"]

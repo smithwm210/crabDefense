@@ -16,9 +16,10 @@ script = ExtResource("1_at1yt")
 rotation = 1.5708
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(-3, -9)
+position = Vector2(-3, -20)
 scale = Vector2(0.194167, 0.194167)
 texture = ExtResource("2_nf87h")
+offset = Vector2(0, 50)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-1, 0)

@@ -23,9 +23,10 @@ position = Vector2(-3.1352e-05, -8.66667)
 shape = SubResource("CapsuleShape2D_o57ui")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(-1, -1)
+position = Vector2(0, -40)
 scale = Vector2(0.194167, 0.194167)
 texture = ExtResource("2_s7xp5")
+offset = Vector2(0, 200)
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 layout_direction = 1

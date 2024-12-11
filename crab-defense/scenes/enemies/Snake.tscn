@@ -17,14 +17,15 @@ script = ExtResource("1_degoo")
 rotation = 1.5708
 scale = Vector2(1.75, 1.75)
 
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -30)
+scale = Vector2(0.194167, 0.194167)
+texture = ExtResource("2_1yu4l")
+offset = Vector2(0, 150)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_o57ui")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(-1, -1)
-scale = Vector2(0.194167, 0.194167)
-texture = ExtResource("2_1yu4l")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 layout_direction = 1
