@@ -62,7 +62,6 @@ offset = Vector2(50, 0)
 position = Vector2(180, 0)
 
 [node name="MuzzleFlash" type="Sprite2D" parent="Turret/Muzzle"]
-visible = false
 position = Vector2(71.3661, -7.62939e-06)
 rotation = 1.5708
 scale = Vector2(2.26401, 2.26401)

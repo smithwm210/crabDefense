@@ -185,7 +185,7 @@ func spawn_enemies(wave_data):
 		for i in wave_data:
 			randomize()
 			#make 5 paths
-			var rand_path = (randi() %3) + 1
+			var rand_path = (randi() %5) + 1
 			var new_enemy = load("res://scenes/enemies/"+i[0]+".tscn").instantiate()
 			new_enemy.base_damage.connect(on_base_damage)
 			new_enemy.enemy_died.connect(on_enemy_died)
@@ -205,7 +205,7 @@ func wave_end():
 	$UI.get_node("HUD/GameControls/PausePlay").set_pressed(false) #sets play button to standard
 	get_node("Map1/crab").global_position += Vector2(256,0) #moves crab
 	
-	for i in 3:
+	for i in 5:
 		get_node("Map1/path" + str(i + 1)).global_position += Vector2(256,0) #moves paths
 	if get_node("Map1/crab").global_position.x >= 200:
 		get_node("Camera2D").global_position += Vector2(256,0) #moves camera
