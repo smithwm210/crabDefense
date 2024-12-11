@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://ctenm5wnp2dtp"]
+[gd_scene load_steps=21 format=4 uid="uid://ctenm5wnp2dtp"]
 
 [ext_resource type="Texture2D" uid="uid://cbfs7cyaayxy5" path="res://assets/environment/tilesets/terrainTiles_default.png" id="1_vg1am"]
 [ext_resource type="Texture2D" uid="uid://d046vtldubtue" path="res://assets/environment/tilesets/CRAB_Env_Sand_v1.png" id="2_2it2y"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b6tn32ibgceg6" path="res://assets/enemies/CRAB_Dyn_crab_v1.png" id="4_yp5gq"]
 [ext_resource type="Texture2D" uid="uid://blnfthq0ou7lh" path="res://assets/environment/tilesets/CRAB_Env_Cliff_v1.png" id="5_a4ey2"]
 [ext_resource type="Texture2D" uid="uid://frysxsqomvps" path="res://assets/environment/tilesets/CRAB_Env_Bridge_v2.png" id="6_lura2"]
+[ext_resource type="PackedScene" uid="uid://ntkari3q7mdg" path="res://scenes/enemies/crab.tscn" id="9_5ii27"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwgsw"]
 texture = ExtResource("1_vg1am")
@@ -113,7 +114,13 @@ curve = SubResource("Curve2D_yj4oj")
 [node name="path3" type="Path2D" parent="."]
 curve = SubResource("Curve2D_gx43l")
 
+[node name="Crab" parent="." instance=ExtResource("9_5ii27")]
+position = Vector2(162, 395)
+rotation = 1.5708
+scale = Vector2(1.3, 1.3)
+
 [node name="crab" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(80, 380)
 rotation = 1.5708
 scale = Vector2(0.2, 0.2)

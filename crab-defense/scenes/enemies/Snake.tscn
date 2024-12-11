@@ -1,9 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbv1522d0qume"]
+[gd_scene load_steps=8 format=3 uid="uid://bbv1522d0qume"]
 
 [ext_resource type="Script" path="res://scenes/enemies/Snake.gd" id="1_degoo"]
 [ext_resource type="Texture2D" uid="uid://duaagcbiuuwa7" path="res://assets/enemies/CRAB_Dyn_snake_v1.png" id="2_1yu4l"]
+[ext_resource type="Texture2D" uid="uid://uwehyu6rr3so" path="res://assets/enemies/CRAB_Dyn_snake_v2.png" id="3_1u5ub"]
 [ext_resource type="Texture2D" uid="uid://dqliglvsw8ofm" path="res://assets/UI/HPbar.jpg" id="3_u500i"]
 [ext_resource type="AudioStream" uid="uid://blgek0h8nsbbf" path="res://assets/sounds/CRAB_SFX_EnemyDeath_v2.mp3" id="4_4ypcc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4r7ng"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1yu4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1u5ub")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 3.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o57ui"]
 radius = 8.0
@@ -17,11 +32,12 @@ script = ExtResource("1_degoo")
 rotation = 1.5708
 scale = Vector2(1.75, 1.75)
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(0, -30)
-scale = Vector2(0.194167, 0.194167)
-texture = ExtResource("2_1yu4l")
-offset = Vector2(0, 150)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(-2.86102e-06, -1.14286)
+scale = Vector2(0.192777, 0.192777)
+sprite_frames = SubResource("SpriteFrames_4r7ng")
+animation = &"Walk"
+frame_progress = 0.0454001
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-1, 0)
