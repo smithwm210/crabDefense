@@ -203,11 +203,18 @@ func wave_end():
 			game_finished.emit("You Won!")
 	wave_over = true
 	$UI.get_node("HUD/GameControls/PausePlay").set_pressed(false) #sets play button to standard
-	get_node("Map1/crab").global_position += Vector2(256,0) #moves crab
+	
+	get_node("Map1/Crab/CharacterBody2D/Sprite2D").visible = false
+	get_node("Map1/Crab/CharacterBody2D/AnimatedSprite2D").visible = true
+	get_node("Map1/Crab/CharacterBody2D/AnimatedSprite2D").play()
+	#add tweening for movement
+	get_node("Map1/Crab").global_position += Vector2(256,0) #moves crab
+	get_node("Map1/Crab/CharacterBody2D/Sprite2D").visible = true
+	get_node("Map1/Crab/CharacterBody2D/AnimatedSprite2D").visible = false
 	
 	for i in 5:
 		get_node("Map1/path" + str(i + 1)).global_position += Vector2(256,0) #moves paths
-	if get_node("Map1/crab").global_position.x >= 200:
+	if get_node("Map1/Crab").global_position.x >= 200:
 		get_node("Camera2D").global_position += Vector2(256,0) #moves camera
 		crab_moved = true
 	dmg_in_round = 0

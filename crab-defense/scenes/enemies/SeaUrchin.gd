@@ -17,6 +17,7 @@ func _ready():
 	health_bar.max_value = hp
 	health_bar.value = hp
 	get_node("HealthBar").set_as_top_level(true) #disabled because health bars were not working
+	get_node("CharacterBody2D/AnimatedSprite2D").play()
 
 func _physics_process(delta):
 	if progress_ratio == 1.0:
@@ -24,6 +25,7 @@ func _physics_process(delta):
 		enemy_died.emit(true)
 		queue_free()
 	move(delta)
+	
 
 func move(delta):
 	set_progress(get_progress() + speed * delta)
@@ -49,7 +51,7 @@ func impact():
 	impact_area.add_child(new_impact)
 
 func on_destroy():
-	get_node("CharacterBody2D/Sprite2D").queue_free()
+	get_node("CharacterBody2D").queue_free()
 	get_node("HealthBar").visible = false
 	$AudioStreamPlayer.play()
 	await get_tree().create_timer(0.5).timeout
