@@ -28,7 +28,12 @@ func _ready():
 	crab_position = get_node("Map1/crab").global_transform.origin
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.pressed.connect(initiate_build_mode.bind(i.name))
-
+	# fix num_placed not resetting on game over bug
+	GameData.tower_data["GunT1"]["num_placed"] = 0
+	GameData.tower_data["Gun2T1"]["num_placed"] = 0
+	GameData.tower_data["Gun3T1"]["num_placed"] = 0
+	GameData.tower_data["Gun4T1"]["num_placed"] = 0
+	GameData.tower_data["Gun5T1"]["num_placed"] = 0
 ##
 ## Building Turrets
 ##
@@ -173,8 +178,9 @@ func retrieve_wave_data():
 				else:
 					i.assign(["GoldUrchin", 1.0]) #4%
 			
-
 	enemies_in_wave = wave_data.size() * (current_wave+1)
+	if current_wave == 14:
+		enemies_in_wave += 1 #add 1 for BossLizard
 	print("there are " + str(enemies_in_wave) + " enemies")
 	return wave_data
 
@@ -192,6 +198,12 @@ func spawn_enemies(wave_data):
 			
 			map_node.get_node("path" + str(rand_path)).add_child(new_enemy, true)
 			await get_tree().create_timer(i[1]).timeout
+	if current_wave == 15:
+		var boss_path = 3
+		var boss_enemy = load("res://scenes/enemies/BossLizard.tscn").instantiate()
+		boss_enemy.base_damage.connect(on_base_damage)
+		boss_enemy.enemy_died.connect(on_enemy_died)
+		map_node.get_node("path" + str(boss_path)).add_child(boss_enemy, true)
 
 func wave_end():
 	if current_wave == 15:
