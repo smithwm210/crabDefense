@@ -28,7 +28,12 @@ func _ready():
 	crab_position = get_node("Map1/crab").global_transform.origin
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.pressed.connect(initiate_build_mode.bind(i.name))
-
+	# fix num_placed not resetting on game over bug
+	GameData.tower_data["GunT1"]["num_placed"] = 0
+	GameData.tower_data["Gun2T1"]["num_placed"] = 0
+	GameData.tower_data["Gun3T1"]["num_placed"] = 0
+	GameData.tower_data["Gun4T1"]["num_placed"] = 0
+	GameData.tower_data["Gun5T1"]["num_placed"] = 0
 ##
 ## Building Turrets
 ##
