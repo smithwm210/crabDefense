@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ctenm5wnp2dtp" path="res://scenes/maps/map_1.tscn" id="2_ykfvm"]
 [ext_resource type="Script" path="res://scenes/mainScenes/ui.gd" id="3_2kad7"]
 [ext_resource type="Texture2D" uid="uid://cwmelx07yucba" path="res://assets/UI/buttons/button_square_depth_gradient.png" id="3_y4yee"]
-[ext_resource type="Texture2D" uid="uid://br6rchw85o27f" path="res://assets/towers/towerDefense_tile249.png" id="4_v4jbs"]
+[ext_resource type="Texture2D" uid="uid://b65rxvnrta1yi" path="res://assets/towers/CRAB_Dyn_Turret_Standard_v1.png" id="5_23qaa"]
 [ext_resource type="Texture2D" uid="uid://cictlbfrmmauh" path="res://assets/towers/CRAB_Dyn_Turret_EarthA_v2.png" id="7_j55ut"]
 [ext_resource type="Texture2D" uid="uid://dmvj7crq6ptai" path="res://assets/Icons/play.png" id="8_2syfi"]
 [ext_resource type="Texture2D" uid="uid://d2fkx4jdsukgj" path="res://assets/towers/CRAB_Dyn_Turret_Fire_Shaft_v1.png" id="8_y8eva"]
@@ -65,14 +65,14 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 28.0
-offset_right = -19.0
-offset_bottom = 8.0
+offset_left = -9.0
+offset_top = 27.0
+offset_right = -15.0
+offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.522491
-texture = ExtResource("4_v4jbs")
+texture = ExtResource("5_23qaa")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="UI/HUD/BuildBar/Gun"]
