@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://4i25rfd43nrv"]
+[gd_scene load_steps=18 format=3 uid="uid://4i25rfd43nrv"]
 
 [ext_resource type="Script" path="res://scenes/mainScenes/GameScene.gd" id="1_kt5qk"]
 [ext_resource type="PackedScene" uid="uid://ctenm5wnp2dtp" path="res://scenes/maps/map_1.tscn" id="2_ykfvm"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://llyllpgvc0ed" path="res://assets/Icons/home.png" id="12_miuy3"]
 [ext_resource type="Texture2D" uid="uid://dqliglvsw8ofm" path="res://assets/UI/HPbar.jpg" id="13_pmmvp"]
 [ext_resource type="AudioStream" uid="uid://fbtllpkq1dwt" path="res://assets/sounds/CRAB_SFX_Place_v1.mp3" id="16_3oad8"]
+[ext_resource type="AudioStream" uid="uid://df4ehpbodevxn" path="res://assets/sounds/CRAB_MUS_Battle_v1.mp3" id="17_ifie3"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_kt5qk")
@@ -360,6 +361,10 @@ vertical_alignment = 1
 
 [node name="TurretPlace" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_3oad8")
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_ifie3")
+autoplay = true
 
 [connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/SpeedUp" to="UI" method="_on_speed_up_pressed"]
