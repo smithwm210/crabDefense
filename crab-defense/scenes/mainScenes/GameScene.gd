@@ -22,10 +22,12 @@ var coords
 
 var crab_moved
 var crab_position
+var camera_position
 
 func _ready():
 	map_node = get_node("Map1")
 	crab_position = get_node("Map1/crab").global_transform.origin
+	camera_position = get_node("Camera2D").global_transform.origin
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.pressed.connect(initiate_build_mode.bind(i.name))
 	# fix num_placed not resetting on game over bug
@@ -219,15 +221,21 @@ func wave_end():
 	get_node("Map1/Crab/CharacterBody2D/Sprite2D").visible = false
 	get_node("Map1/Crab/CharacterBody2D/AnimatedSprite2D").visible = true
 	get_node("Map1/Crab/CharacterBody2D/AnimatedSprite2D").play()
+	var crab_tween = get_node("Map1/Crab").create_tween()
+	crab_position += Vector2(256,0)
+	crab_tween.tween_property(get_node("Map1/Crab"), "position", crab_position, 2)
 	#add tweening for movement
-	get_node("Map1/Crab").global_position += Vector2(256,0) #moves crab
+	#get_node("Map1/Crab").global_position += Vector2(256,0) #moves crab
 	get_node("Map1/Crab/CharacterBody2D/Sprite2D").visible = true
 	get_node("Map1/Crab/CharacterBody2D/AnimatedSprite2D").visible = false
 	
 	for i in 5:
 		get_node("Map1/path" + str(i + 1)).global_position += Vector2(256,0) #moves paths
 	if get_node("Map1/Crab").global_position.x >= 200:
-		get_node("Camera2D").global_position += Vector2(256,0) #moves camera
+		var camera_tween = get_node("Camera2D").create_tween()
+		camera_position += Vector2(256,0)
+		crab_tween.tween_property(get_node("Camera2D"), "position", camera_position, 2)
+		#get_node("Camera2D").global_position += Vector2(256,0) #moves camera
 		crab_moved = true
 	dmg_in_round = 0
 	#await get_tree().create_timer(3).timeout

@@ -13,7 +13,7 @@ config_version=5
 config/name="Crab Defense"
 run/main_scene="res://scene_handler.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/UI/CRAB_UI_CrabSymbol_v1.png"
 
 [autoload]
 
